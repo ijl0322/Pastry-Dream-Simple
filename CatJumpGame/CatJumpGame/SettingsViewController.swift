@@ -101,7 +101,6 @@ extension SettingsViewController : UITextFieldDelegate {
             if textField.tag == 1 {
                 print("Text Entered: \(text)")
                 UserData.shared.changeNickname(name: text)
-                
             }
         }
         return

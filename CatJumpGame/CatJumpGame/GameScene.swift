@@ -31,8 +31,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     let TileHeight: CGFloat = 100.0
     let space: CGFloat = 50.0
     var level = Level(num: 1)
-    var scoreLabel = MKOutlinedLabelNode(fontNamed: "BradyBunchRemastered", fontSize: 80)
-    var timeLabel = MKOutlinedLabelNode(fontNamed: "BradyBunchRemastered", fontSize: 80)
+    var scoreLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
+    var timeLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
     var playableMargin: CGFloat = 0.0
     var seesawLeftBound: CGFloat = 0.0
     var seesawRightBound: CGFloat = 0.0
@@ -46,7 +46,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var pausedNotice: GamePausedNotificationNode?
     
     //Game State
-    var score = 0
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "\(score)"
+        }
+    }
+    
     var gameState: GameState = .initial
     
     override func didMove(to view: SKView) {
@@ -59,7 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             addChild(pausedNotice!)
             addMKLabels()
             addCatAndSeesaw()
-            timeLabel.outlinedText = (timeLimit - elapsedTime).secondsToFormatedString()
+            timeLabel.text = (timeLimit - elapsedTime).secondsToFormatedString()
         }
         //view.showsPhysics = true
     }
@@ -183,8 +188,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             elapsedTime = aDecoder.decodeInteger(forKey: "Scene.elapsedTime")
             timeLimit = aDecoder.decodeInteger(forKey: "Scene.timeLimit")
             score = aDecoder.decodeInteger(forKey: "Scene.score")
-            scoreLabel = MKOutlinedLabelNode(fontNamed: "BradyBunchRemastered", fontSize: 80)
-            timeLabel = MKOutlinedLabelNode(fontNamed: "BradyBunchRemastered", fontSize: 80)
+            scoreLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
+            timeLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
         }
         
         addObservers()
@@ -219,7 +224,7 @@ extension GameScene {
             startTime = Int(currentTime) - elapsedTime
         }
         
-        timeLabel.outlinedText = (timeLimit - elapsedTime).secondsToFormatedString()
+        timeLabel.text = (timeLimit - elapsedTime).secondsToFormatedString()
         
         if timeLimit - elapsedTime <= 5 {
             if timeLabel.action(forKey: "timeout") == nil {
@@ -293,9 +298,6 @@ extension GameScene {
         catNode?.dropSlightly()
         catNode?.eatBreadAnimation()
         score += (breadAte?.remove())!
-        scoreLabel.borderOffset = CGPoint(x: 1, y: 1)
-        scoreLabel.outlinedText = "\(score)"
-        //print("My Score: \(score)")
     }
     
     // Remove the cat's join from the seesaw, enabling the cat to jump
@@ -410,18 +412,18 @@ extension GameScene {
     
     // Add score/time label to the scene
     func addMKLabels() {
-        scoreLabel.borderColor = UIColor.red
-        scoreLabel.fontColor = UIColor.white
-        scoreLabel.outlinedText = "\(score)"
+        scoreLabel.color = UIColor.red
+        scoreLabel.fontSize = 80
+        scoreLabel.text = "\(score)"
         scoreLabel.zPosition = 15
-        scoreLabel.position = CGPoint(x: 1217, y: 25)
+        scoreLabel.position = CGPoint(x: 1217, y: 1975)
         addChild(scoreLabel)
     
-        timeLabel.borderColor = UIColor.red
-        timeLabel.fontColor = UIColor.white
-        timeLabel.outlinedText = timeLimit.secondsToFormatedString()
+        timeLabel.color = UIColor.red
+        timeLabel.fontSize = 80
+        timeLabel.text = timeLimit.secondsToFormatedString()
         timeLabel.zPosition = 15
-        timeLabel.position = CGPoint(x: 364, y: 25)
+        timeLabel.position = CGPoint(x: 364, y: 1975)
         addChild(timeLabel)
     }
     
