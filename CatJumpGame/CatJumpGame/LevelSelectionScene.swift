@@ -39,10 +39,10 @@ class LevelSelectionScene: SKScene, SKPhysicsContactDelegate{
             }
         }
         
-        let coinsLabel = MKOutlinedLabelNode(fontNamed: "BradyBunchRemastered", fontSize: 50)
-        coinsLabel.borderColor = UIColor.red
-        coinsLabel.fontColor = UIColor.white
-        coinsLabel.outlinedText = "\(UserData.shared.coins)"
+        let coinsLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
+        coinsLabel.fontColor = UIColor.red
+        coinsLabel.text = "\(UserData.shared.coins)"
+        coinsLabel.fontSize = 50
         coinsLabel.zPosition = 15
         coinsLabel.position = CGPoint(x: 380, y: -990)
         addChild(coinsLabel)

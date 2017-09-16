@@ -24,7 +24,7 @@ class SeesawNode: SKSpriteNode {
         let texture = SKTexture(imageNamed: "seesaw")
         let size = CGSize(width: 600, height: 105)
         super.init(texture: texture, color: UIColor.clear, size: size)
-        self.position = CGPoint(x: 768, y: 112.5)
+        self.position = CGPoint(x: 768, y: 77.5)
         self.zPosition = 1
         self.name = "seesaw"
     }
@@ -82,7 +82,7 @@ class SeesawNode: SKSpriteNode {
         let rightEdgeJoint = SKPhysicsJointFixed.joint(withBodyA: physicsBody!, bodyB: rightContactPointNode.physicsBody!, anchor: self.position)
         scene.physicsWorld.add(rightEdgeJoint)
         
-        let moveConstaint = SKConstraint.positionY(SKRange(value: self.frame.size.height/2 + 60,
+        let moveConstaint = SKConstraint.positionY(SKRange(value: self.frame.size.height/2 + 25,
                                                            variance: 0))
         let rotationConstraint = SKConstraint.zRotation(
             SKRange(lowerLimit: -30.toRadians(), upperLimit: 30.toRadians()))

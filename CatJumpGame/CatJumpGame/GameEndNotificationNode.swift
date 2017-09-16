@@ -88,12 +88,14 @@ class GameEndNotificationNode: SKSpriteNode {
     }
     
     func animateBonus(time: Int) -> Int{
+        let timeBonusScore = time*10
+        
         if levelStatus != .threeStar {
             return 0
         }
         
         let bonus = SKLabelNode(fontNamed: "BradyBunchRemastered")
-        bonus.text = "+\(time*10)"
+        bonus.text = "+\(timeBonusScore)"
         bonus.fontColor = SKColor.red
         bonus.fontSize = 144
         bonus.zPosition = 30
@@ -112,13 +114,13 @@ class GameEndNotificationNode: SKSpriteNode {
             self.scoreLabel.borderOffset = CGPoint(x: -3, y: -3)
             self.scoreLabel.borderColor = UIColor.red
             self.scoreLabel.fontColor = UIColor.white
-            self.scoreLabel.outlinedText = "\(self.score + time * 10)"
+            self.scoreLabel.outlinedText = "\(self.score + timeBonusScore)"
             self.scoreLabel.zPosition = 15
             self.scoreLabel.position = CGPoint(x: 143, y: -327)
             self.addChild(self.scoreLabel)
         })
         
-        return time * 10
+        return timeBonusScore
     }
     
     func addButtons() {

@@ -241,7 +241,8 @@ class CatSpriteNode: SKSpriteNode {
     }
     
     func dropSlightly() {
-        physicsBody?.applyImpulse(CGVector(dx: 0, dy: -300))
+        //physicsBody?.applyImpulse(CGVector(dx: 0, dy: -300))
+        self.physicsBody?.velocity = CGVector(dx: 0, dy: -350)
     }
     
     func enableSeesawContact() {

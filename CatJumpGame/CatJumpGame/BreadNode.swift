@@ -31,8 +31,6 @@ class BreadNode: SKSpriteNode {
     }
     
     func didMoveToScene() {
-        print("bread added to scene")
-
         let size = CGSize(width: self.frame.size.width/2, height: self.frame.size.height/2)
         physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.affectedByGravity = false

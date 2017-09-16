@@ -37,7 +37,7 @@ enum LevelCompleteType: Int, CustomStringConvertible {
     }
     
     var coins: Int {
-        let cointsReceived = [0, 1000, 1200, 1500, 0]
+        let cointsReceived = [0, 50, 100, 150, 0]
         return cointsReceived[rawValue]
     }
 }
@@ -52,6 +52,7 @@ class Level {
     var highestScore = 0
     var timeLimit = 0
     var levelNum = 0
+    var spinningLogLocations:[[Int]] = []
     
     init(num: Int) {
         
@@ -65,6 +66,8 @@ class Level {
  
         guard let tilesArray = dictionary["tiles"] as? [[Int]] else { return }
         guard let time = dictionary["timeLimit"] as? Int else {return}
+        spinningLogLocations = dictionary["spinningLog"] as? [[Int]] ?? []
+        dump(spinningLogLocations)
         self.timeLimit = time
         
         for (row, rowArray) in tilesArray.enumerated() {

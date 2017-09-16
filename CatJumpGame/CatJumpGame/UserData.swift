@@ -53,45 +53,11 @@ class UserData {
         }
     }
         
-//    func getDataFromFirebase() {
-//        FirebaseManager.sharedInstance.getUserData(completion: { (snapshot) in
-//            self.nickName = snapshot["nickName"] as! String
-//            self.highScores = snapshot["highScores"] as! [Int]
-//            print("User init from firebase")
-//        })
-//    }
-    
-    // The user can transfer their game data from different devices
-    // This function transfers data from firebase to user's device
-    func updateFromTransfer(snapshot: [String:Any]) {
-
-        self.nickName = snapshot["nickName"] as! String
-        self.highScores = snapshot["highScores"] as! [Int]
-        let rawLevelStatus = snapshot["levelStatus"] as! [Int]
-        
-        self.levelStatus = self.rawToLevelStatus(raw: rawLevelStatus)
-        self.coins = snapshot["coins"] as! Int
-        self.defaults.set(self.nickName, forKey: "nickName")
-        self.defaults.set(self.coins, forKey: "coins")
-        self.defaults.set(self.highScores, forKey: "highScores")
-        self.defaults.set(self.levelStatusToRaw(), forKey: "levelStatus")
-    }
-    
-
-//    func highScoreForLevel(_ num: Int) -> Int? {
-//        if num <= highScores.count {
-//            return highScores[num - 1]
-//        }
-//        return nil
-//    }
-    
-    
     // Changes the user's nickname and update to firebase
     func changeNickname(name: String) {
         nickName = name
         print("Changing nickname to \(nickName)")
         defaults.set(nickName, forKey: "nickName")
-        saveToFirebase()
     }
     
     // LevelCompleteType is a enumeration that can be initialized from Int value
@@ -120,13 +86,11 @@ class UserData {
                 highScores[num - 1] = score
                 levelStatus[num - 1] = levelCompleteType
                 print("High Score for level \(num) is: \(highScores[num - 1])")
-                saveToFirebase()
             }
         } else {
             highScores.append(score)
             print("High Score for level \(num) is: \(highScores[num - 1])")
             levelStatus[num - 1] = levelCompleteType
-            saveToFirebase()
         }
         
         if levelCompleteType != .lose && num == highScores.count{
@@ -141,14 +105,5 @@ class UserData {
         defaults.set(coins, forKey: "coins")
         defaults.set(highScores, forKey: "highScores")
         defaults.set(levelStatusToRaw(), forKey: "levelStatus")
-        
-        saveToFirebase()
     }
-    
-    // Save the current user data to firebase
-    func saveToFirebase() {
-        let newLevelStatus = levelStatusToRaw()
-        FirebaseManager.sharedInstance.updateUserData(data: ["nickName": nickName, "highScores": highScores, "levelStatus" : newLevelStatus, "coins": coins])
-    }
-    
 }

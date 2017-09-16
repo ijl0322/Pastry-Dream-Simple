@@ -10,6 +10,9 @@
 		0E0A72E81ECCEF8300022BCE /* Seesaw.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E0A72E71ECCEF8300022BCE /* Seesaw.sks */; };
 		0E0A72EA1ECCF03700022BCE /* SeesawNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0A72E91ECCF03700022BCE /* SeesawNode.swift */; };
 		0E0B41611EDA864C005A9E57 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B41601EDA864C005A9E57 /* SettingsViewController.swift */; };
+		0E0BCAA71F6D9E47002B158A /* Level_6.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E0BCAA61F6D9E47002B158A /* Level_6.json */; };
+		0E0BCAA91F6DBA88002B158A /* SpinningWood.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E0BCAA81F6DBA88002B158A /* SpinningWood.sks */; };
+		0E0BCAAB1F6DD5B6002B158A /* MovingWood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0BCAAA1F6DD5B6002B158A /* MovingWood.swift */; };
 		0E12EEA51ED13EB600B1BB40 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E12EEA41ED13EB600B1BB40 /* Array2D.swift */; };
 		0E12EEAA1ED13F0C00B1BB40 /* Dictionary+JsonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E12EEA91ED13F0C00B1BB40 /* Dictionary+JsonExtension.swift */; };
 		0E12EEAC1ED140F600B1BB40 /* Bread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E12EEAB1ED140F600B1BB40 /* Bread.swift */; };
@@ -27,14 +30,11 @@
 		0E214FB91EDCBA060081D6F0 /* LeaderBoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E214FB81EDCBA060081D6F0 /* LeaderBoardManager.swift */; };
 		0E214FBB1EDCC8750081D6F0 /* LeaderBoardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E214FBA1EDCC8750081D6F0 /* LeaderBoardNode.swift */; };
 		0E3143F01ED3D8AC004E584C /* CatSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3143EF1ED3D8AC004E584C /* CatSpriteNode.swift */; };
-		0E47E4471EDB70CE0026CC7F /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E47E4461EDB70CE0026CC7F /* AlertViewController.swift */; };
 		0E47E4761EDBA82B0026CC7F /* AllLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E47E4751EDBA82B0026CC7F /* AllLevels.swift */; };
 		0E47E4841EDBDCBD0026CC7F /* Level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E47E47F1EDBDCBD0026CC7F /* Level_1.json */; };
 		0E47E4851EDBDCBD0026CC7F /* Level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E47E4801EDBDCBD0026CC7F /* Level_2.json */; };
 		0E47E4861EDBDCBD0026CC7F /* Level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E47E4811EDBDCBD0026CC7F /* Level_3.json */; };
 		0E47E4881EDBDCBD0026CC7F /* Level_5.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E47E4831EDBDCBD0026CC7F /* Level_5.json */; };
-		0E51127A1EDA2D7D00CA19C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E5112791EDA2D7D00CA19C6 /* GoogleService-Info.plist */; };
-		0E51127E1EDA301900CA19C6 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E51127D1EDA301900CA19C6 /* FirebaseManager.swift */; };
 		0E5112801EDA3C3F00CA19C6 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E51127F1EDA3C3F00CA19C6 /* UserData.swift */; };
 		0E511C591ECE008A00F3E7A9 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E511C4D1ECE008A00F3E7A9 /* CGFloat+Extensions.swift */; };
 		0E511C5A1ECE008A00F3E7A9 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E511C4E1ECE008A00F3E7A9 /* CGPoint+Extensions.swift */; };
@@ -76,6 +76,9 @@
 		0E0A72E71ECCEF8300022BCE /* Seesaw.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Seesaw.sks; sourceTree = "<group>"; };
 		0E0A72E91ECCF03700022BCE /* SeesawNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeesawNode.swift; sourceTree = "<group>"; };
 		0E0B41601EDA864C005A9E57 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0E0BCAA61F6D9E47002B158A /* Level_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_6.json; sourceTree = "<group>"; };
+		0E0BCAA81F6DBA88002B158A /* SpinningWood.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpinningWood.sks; sourceTree = "<group>"; };
+		0E0BCAAA1F6DD5B6002B158A /* MovingWood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingWood.swift; sourceTree = "<group>"; };
 		0E12EEA41ED13EB600B1BB40 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		0E12EEA91ED13F0C00B1BB40 /* Dictionary+JsonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+JsonExtension.swift"; sourceTree = "<group>"; };
 		0E12EEAB1ED140F600B1BB40 /* Bread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bread.swift; sourceTree = "<group>"; };
@@ -94,14 +97,11 @@
 		0E214FB81EDCBA060081D6F0 /* LeaderBoardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardManager.swift; sourceTree = "<group>"; };
 		0E214FBA1EDCC8750081D6F0 /* LeaderBoardNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardNode.swift; sourceTree = "<group>"; };
 		0E3143EF1ED3D8AC004E584C /* CatSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatSpriteNode.swift; sourceTree = "<group>"; };
-		0E47E4461EDB70CE0026CC7F /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		0E47E4751EDBA82B0026CC7F /* AllLevels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLevels.swift; sourceTree = "<group>"; };
 		0E47E47F1EDBDCBD0026CC7F /* Level_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_1.json; sourceTree = "<group>"; };
 		0E47E4801EDBDCBD0026CC7F /* Level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_2.json; sourceTree = "<group>"; };
 		0E47E4811EDBDCBD0026CC7F /* Level_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_3.json; sourceTree = "<group>"; };
 		0E47E4831EDBDCBD0026CC7F /* Level_5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_5.json; sourceTree = "<group>"; };
-		0E5112791EDA2D7D00CA19C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0E51127D1EDA301900CA19C6 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		0E51127F1EDA3C3F00CA19C6 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		0E511C4D1ECE008A00F3E7A9 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		0E511C4E1ECE008A00F3E7A9 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
@@ -162,6 +162,7 @@
 				0E47E4811EDBDCBD0026CC7F /* Level_3.json */,
 				0EA4CC531EDD1C74000515EB /* Level_4.json */,
 				0E47E4831EDBDCBD0026CC7F /* Level_5.json */,
+				0E0BCAA61F6D9E47002B158A /* Level_6.json */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -175,6 +176,7 @@
 				0ED507CF1ECBDDA600E141C3 /* GameScene.sks */,
 				0E14EA601ED92A8E00716762 /* LevelSelectionScene.sks */,
 				0E14EA621ED92AF500716762 /* LevelSelectionScene.swift */,
+				0E0BCAA81F6DBA88002B158A /* SpinningWood.sks */,
 			);
 			name = SKScenes;
 			sourceTree = "<group>";
@@ -194,7 +196,6 @@
 			isa = PBXGroup;
 			children = (
 				0E0B41601EDA864C005A9E57 /* SettingsViewController.swift */,
-				0E47E4461EDB70CE0026CC7F /* AlertViewController.swift */,
 				0E8441B51ED9147C00F58E42 /* RootViewController.swift */,
 				0E8441B71ED914A700F58E42 /* MenuViewController.swift */,
 				0E139B241EDE194400304128 /* SplashScreenViewController.swift */,
@@ -205,7 +206,6 @@
 		0E139B211EDE171600304128 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				0E51127D1EDA301900CA19C6 /* FirebaseManager.swift */,
 				0E214FB81EDCBA060081D6F0 /* LeaderBoardManager.swift */,
 			);
 			name = NetworkManager;
@@ -237,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				0E6F45901ECE18A80071F818 /* BreadNode.swift */,
+				0E0BCAAA1F6DD5B6002B158A /* MovingWood.swift */,
 				0E0A72E91ECCF03700022BCE /* SeesawNode.swift */,
 				0E3143EF1ED3D8AC004E584C /* CatSpriteNode.swift */,
 				0E1DD82F1ED76BDA003AE270 /* GameEndNotificationNode.swift */,
@@ -271,7 +272,6 @@
 		0ED507C11ECBDDA600E141C3 = {
 			isa = PBXGroup;
 			children = (
-				0E5112791EDA2D7D00CA19C6 /* GoogleService-Info.plist */,
 				0ED507CC1ECBDDA600E141C3 /* CatJumpGame */,
 				0ED507CB1ECBDDA600E141C3 /* Products */,
 				33CE9D5038F227DD2A113E58 /* Pods */,
@@ -413,16 +413,17 @@
 				0ECBA3D11ED38EDE0067C983 /* Cat.sks in Resources */,
 				0E47E4841EDBDCBD0026CC7F /* Level_1.json in Resources */,
 				0EEC293D1ECBED900003623D /* Cat1.sks in Resources */,
+				0E0BCAA71F6D9E47002B158A /* Level_6.json in Resources */,
 				0E139B2A1EDE367500304128 /* tink.mp3 in Resources */,
 				0E1DD8321ED77279003AE270 /* gameEndNotification.sks in Resources */,
 				0E139B271EDE262100304128 /* MaltShopBop.mp3 in Resources */,
 				0ED507DB1ECBDDA600E141C3 /* Assets.xcassets in Resources */,
 				0E68670C1ED518C5002E7886 /* BradBunR.ttf in Resources */,
 				0E14EA611ED92A8E00716762 /* LevelSelectionScene.sks in Resources */,
-				0E51127A1EDA2D7D00CA19C6 /* GoogleService-Info.plist in Resources */,
 				0E139B231EDE174400304128 /* SplashScreen.storyboard in Resources */,
 				0ED507DE1ECBDDA600E141C3 /* LaunchScreen.storyboard in Resources */,
 				0EA4CC541EDD1C74000515EB /* Level_4.json in Resources */,
+				0E0BCAA91F6DBA88002B158A /* SpinningWood.sks in Resources */,
 				0E47E4881EDBDCBD0026CC7F /* Level_5.json in Resources */,
 				0EB857B41ED87E530003B4BD /* Resume.sks in Resources */,
 				0E6332E11EDD2D9A00A48044 /* Settings.bundle in Resources */,
@@ -495,11 +496,11 @@
 				0E214FBB1EDCC8750081D6F0 /* LeaderBoardNode.swift in Sources */,
 				0E8441B81ED914A700F58E42 /* MenuViewController.swift in Sources */,
 				0E511C5D1ECE008A00F3E7A9 /* SKAction+Extensions.swift in Sources */,
+				0E0BCAAB1F6DD5B6002B158A /* MovingWood.swift in Sources */,
 				0E214FB91EDCBA060081D6F0 /* LeaderBoardManager.swift in Sources */,
 				0E68670E1ED51B9E002E7886 /* MKOutlinedLabelNode.swift in Sources */,
 				0ED507D41ECBDDA600E141C3 /* GameScene.swift in Sources */,
 				0E511C601ECE008A00F3E7A9 /* SKNode+Extensions.swift in Sources */,
-				0E51127E1EDA301900CA19C6 /* FirebaseManager.swift in Sources */,
 				0E12EEAE1ED143D600B1BB40 /* Level.swift in Sources */,
 				0E14EA631ED92AF500716762 /* LevelSelectionScene.swift in Sources */,
 				0E0A72EA1ECCF03700022BCE /* SeesawNode.swift in Sources */,
@@ -513,7 +514,6 @@
 				0E12EEAC1ED140F600B1BB40 /* Bread.swift in Sources */,
 				0E1DD8301ED76BDA003AE270 /* GameEndNotificationNode.swift in Sources */,
 				0E12EEAA1ED13F0C00B1BB40 /* Dictionary+JsonExtension.swift in Sources */,
-				0E47E4471EDB70CE0026CC7F /* AlertViewController.swift in Sources */,
 				0E511C5F1ECE008A00F3E7A9 /* SKColor+Extensions.swift in Sources */,
 				0E139B251EDE194400304128 /* SplashScreenViewController.swift in Sources */,
 				0E8441B61ED9147C00F58E42 /* RootViewController.swift in Sources */,

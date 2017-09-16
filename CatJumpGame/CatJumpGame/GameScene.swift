@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             addCatAndSeesaw()
             timeLabel.text = (timeLimit - elapsedTime).secondsToFormatedString()
         }
-        //view.showsPhysics = true
+        view.showsPhysics = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -214,7 +214,6 @@ extension GameScene {
         gameEndNotificationNode?.animateStarsReceived()
         score += (gameEndNotificationNode?.animateBonus(time: timeLimit - elapsedTime))!
         UserData.shared.updateHighScoreForLevel(level.levelNum, score: score, levelCompleteType: level.levelCompleteStatus(score: score))
-        LeaderBoardManager.sharedInstance.postScore(score, level: level.levelNum)
         timeLabel.removeAllActions()
     }
     
@@ -384,6 +383,7 @@ extension GameScene {
         
         addLabels()
         addCatAndSeesaw()
+        addObstacles()
         
         let allBreads = level.loadBread()
         addBread(breads: allBreads)
@@ -428,6 +428,27 @@ extension GameScene {
         timeLabel.zPosition = 15
         timeLabel.position = CGPoint(x: 764, y: 1940)
         addChild(timeLabel)
+    }
+    
+    // Add any obstacles
+    func addObstacles() {
+        
+        // Add Spinning Wood
+        for obstaclePosition in level.spinningLogLocations {
+            print("Obstacle Position \(obstaclePosition[0])")
+            let path = Bundle.main.path(forResource: "SpinningWood", ofType: "sks")
+            let obstacle = SKReferenceNode(url: NSURL (fileURLWithPath: path!) as URL)
+            let obstacleX = obstaclePosition[0]
+            let obstacleY = obstaclePosition[1]
+            obstacle.zPosition = 20
+            obstacle.position = CGPoint(x: obstacleX, y: obstacleY)
+            print("Adding Spinning Wood")
+            self.scene?.addChild(obstacle)
+        }
+        
+        // Add Moving Wood
+        let movingWood = MovingWood(x: 500.0, y: 1000.0)
+        addChild(movingWood)
     }
     
     //MARK: - Touches Helper
