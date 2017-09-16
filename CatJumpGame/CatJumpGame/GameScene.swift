@@ -29,7 +29,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
     let TileWidth: CGFloat = 100.0
     let TileHeight: CGFloat = 100.0
-    let space: CGFloat = 50.0
+    let space: CGFloat = 47.0
+    let breadSideMargin: CGFloat = 11.5
+    var breadTopMargin: CGFloat = 0
     var level = Level(num: 1)
     var scoreLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
     var timeLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
@@ -62,7 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             pausedNotice = GamePausedNotificationNode()
             pausedNotice?.zPosition = 90
             addChild(pausedNotice!)
-            addMKLabels()
+            addLabels()
             addCatAndSeesaw()
             timeLabel.text = (timeLimit - elapsedTime).secondsToFormatedString()
         }
@@ -353,8 +355,8 @@ extension GameScene {
     // Returns a CGPoint to position the bread, according to the row and column
     func pointFor(column: Int, row: Int) -> CGPoint {
         return CGPoint(
-            x: CGFloat(column)*(TileWidth + space) + TileWidth/2 + playableMargin,
-            y: CGFloat(row)*TileHeight + TileHeight/2 + size.height/2)
+            x: CGFloat(column)*(TileWidth + space) + TileWidth/2 + playableMargin + breadSideMargin,
+            y: CGFloat(row)*TileHeight + TileHeight/2 + breadTopMargin)
     }
     
     //MARK: - Game Scene Setup
@@ -372,6 +374,7 @@ extension GameScene {
             - maxAspectRatioWidth)/2
         let playableRect = CGRect(x:  playableMargin, y: 0,
                                   width: maxAspectRatioWidth, height: size.height)
+        breadTopMargin = size.height/2 - 50.0
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: playableRect)
         physicsWorld.contactDelegate = self
@@ -379,7 +382,7 @@ extension GameScene {
         
         timeLimit = level.timeLimit
         
-        addMKLabels()
+        addLabels()
         addCatAndSeesaw()
         
         let allBreads = level.loadBread()
@@ -411,19 +414,19 @@ extension GameScene {
     }
     
     // Add score/time label to the scene
-    func addMKLabels() {
-        scoreLabel.color = UIColor.red
+    func addLabels() {
+        scoreLabel.fontColor = UIColor.red
         scoreLabel.fontSize = 80
         scoreLabel.text = "\(score)"
         scoreLabel.zPosition = 15
-        scoreLabel.position = CGPoint(x: 1217, y: 1975)
+        scoreLabel.position = CGPoint(x: 1217, y: 1940)
         addChild(scoreLabel)
     
-        timeLabel.color = UIColor.red
+        timeLabel.fontColor = UIColor.red
         timeLabel.fontSize = 80
         timeLabel.text = timeLimit.secondsToFormatedString()
         timeLabel.zPosition = 15
-        timeLabel.position = CGPoint(x: 364, y: 1975)
+        timeLabel.position = CGPoint(x: 764, y: 1940)
         addChild(timeLabel)
     }
     
@@ -508,7 +511,7 @@ extension GameScene {
             pausedNotice = GamePausedNotificationNode()
             pausedNotice?.zPosition = 90
             addChild(pausedNotice!)
-            addMKLabels()
+            addLabels()
             addCatAndSeesaw()
         }
     }
