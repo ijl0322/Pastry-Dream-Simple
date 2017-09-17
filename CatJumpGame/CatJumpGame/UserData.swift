@@ -21,6 +21,8 @@ class UserData {
     var nickName = "Anonymous"
     var coins = 0
     var catsOwned:[Int] = []
+    var leftCat = CatType.cat1
+    var rightCat = CatType.cat2
     var unlockedLevels: Int {
         return highScores.count
     }
@@ -53,6 +55,26 @@ class UserData {
             defaults.set(coins, forKey: "coins")
         }
         
+        if let leftCatVal = defaults.integer(forKey: "leftCat") as Int?{
+            if leftCatVal != 0 {
+                leftCat = CatType(raw: leftCatVal)!
+                print("Retrieving left cat to \(leftCat)")
+            } else {
+                defaults.set(leftCat.rawValue, forKey: "leftCat")
+                print("Setting left cat to \(leftCat)")
+            }
+        }
+        
+        if let rightCatVal = defaults.integer(forKey: "rightCat") as Int? {
+            if rightCatVal != 0 {
+                rightCat = CatType(raw: rightCatVal)!
+                print("Retrieving cat to \(rightCat)")
+            } else {
+                defaults.set(rightCat.rawValue, forKey: "rightCat")
+                print("Setting cat to \(rightCat)")
+            }
+        }
+        
         if let catsOwned = defaults.array(forKey: "catsOwned") as? [Int] {
             self.catsOwned = catsOwned
             if catsOwned.count < CatType.cat1.catCount {
@@ -70,8 +92,18 @@ class UserData {
             defaults.set(self.catsOwned, forKey: "catsOwned")
         }
     }
+    
+    func switchCat(newType: CatType, isLeftCat: Bool) {
+        if isLeftCat {
+            leftCat = newType
+            defaults.set(leftCat.rawValue, forKey: "leftCat")
+        } else {
+            rightCat = newType
+            defaults.set(rightCat.rawValue, forKey: "rightCat")
+        }
+    }
         
-    // Changes the user's nickname and update to firebase
+    // Changes the user's nickname
     func changeNickname(name: String) {
         nickName = name
         print("Changing nickname to \(nickName)")

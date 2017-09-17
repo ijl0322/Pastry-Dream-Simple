@@ -15,6 +15,7 @@ class CatSelectionScene: SKScene {
     var leftCatNode: CatSpriteNode!
     var leftCatType = CatType.cat2
     var rightCatType = CatType.cat3
+    var switchLeftCat = false
     var upButton: SKSpriteNode!
     var downButton: SKSpriteNode!
     var pageNumber = 0
@@ -97,19 +98,39 @@ class CatSelectionScene: SKScene {
     }
     
     func switchCat(num: Int, node: SKSpriteNode) {
-        if UserData.shared.catsOwned[num] == 1 {
+        let newCat = CatType(raw: num)!
+        print(newCat == leftCatType)
+        print(newCat == rightCatType)
+//        if newCat == leftCatType || newCat == rightCatType {
+//            print("Duplicate Cat")
+//            return
+//        }
+        
+        if UserData.shared.catsOwned[num] == 1 && switchLeftCat{
             let oldCatButton = childNode(withName: "button\(leftCatType.rawValue)") as! SKSpriteNode
             oldCatButton.texture = SKTexture(imageNamed: "selectButton")
             node.texture = SKTexture(imageNamed: "selectedButton")
-            let newCat = CatType(raw: num)!
+
             leftCatNode.changeCatTypeTo(newType: newCat)
             leftCatType = newCat
+            UserData.shared.switchCat(newType: leftCatType, isLeftCat: true)
+        } else if UserData.shared.catsOwned[num] == 1 && !switchLeftCat{
+            let oldCatButton = childNode(withName: "button\(rightCatType.rawValue)") as! SKSpriteNode
+            oldCatButton.texture = SKTexture(imageNamed: "selectButton")
+            node.texture = SKTexture(imageNamed: "selectedButton")
+            
+            rightCatNode.changeCatTypeTo(newType: newCat)
+            rightCatType = newCat
+            UserData.shared.switchCat(newType: rightCatType, isLeftCat: false)
         }
     }
     
     func addCats() {
-        rightCatNode = CatSpriteNode(catType: .cat3, isLeftCat: false)
-        leftCatNode = CatSpriteNode(catType: .cat2, isLeftCat: true)
+        
+        leftCatType = UserData.shared.leftCat
+        rightCatType = UserData.shared.rightCat
+        rightCatNode = CatSpriteNode(catType: rightCatType, isLeftCat: false)
+        leftCatNode = CatSpriteNode(catType: leftCatType, isLeftCat: true)
         
         rightCatNode.position = CGPoint(x: 185, y: -690)
         rightCatNode.zPosition = 10
