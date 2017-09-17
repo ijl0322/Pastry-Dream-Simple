@@ -13,6 +13,7 @@
 		0E0BCAA71F6D9E47002B158A /* Level_6.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E0BCAA61F6D9E47002B158A /* Level_6.json */; };
 		0E0BCAA91F6DBA88002B158A /* SpinningWood.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E0BCAA81F6DBA88002B158A /* SpinningWood.sks */; };
 		0E0BCAAB1F6DD5B6002B158A /* MovingWood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0BCAAA1F6DD5B6002B158A /* MovingWood.swift */; };
+		0E0BCAAD1F6DFC62002B158A /* Cat3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E0BCAAC1F6DFC62002B158A /* Cat3.sks */; };
 		0E12EEA51ED13EB600B1BB40 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E12EEA41ED13EB600B1BB40 /* Array2D.swift */; };
 		0E12EEAA1ED13F0C00B1BB40 /* Dictionary+JsonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E12EEA91ED13F0C00B1BB40 /* Dictionary+JsonExtension.swift */; };
 		0E12EEAC1ED140F600B1BB40 /* Bread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E12EEAB1ED140F600B1BB40 /* Bread.swift */; };
@@ -79,6 +80,7 @@
 		0E0BCAA61F6D9E47002B158A /* Level_6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_6.json; sourceTree = "<group>"; };
 		0E0BCAA81F6DBA88002B158A /* SpinningWood.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpinningWood.sks; sourceTree = "<group>"; };
 		0E0BCAAA1F6DD5B6002B158A /* MovingWood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingWood.swift; sourceTree = "<group>"; };
+		0E0BCAAC1F6DFC62002B158A /* Cat3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cat3.sks; sourceTree = "<group>"; };
 		0E12EEA41ED13EB600B1BB40 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		0E12EEA91ED13F0C00B1BB40 /* Dictionary+JsonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+JsonExtension.swift"; sourceTree = "<group>"; };
 		0E12EEAB1ED140F600B1BB40 /* Bread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bread.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				0EB857B31ED87E530003B4BD /* Resume.sks */,
 				0EEC293C1ECBED900003623D /* Cat1.sks */,
 				0ECBA3D01ED38EDD0067C983 /* Cat.sks */,
+				0E0BCAAC1F6DFC62002B158A /* Cat3.sks */,
 				0E0A72E71ECCEF8300022BCE /* Seesaw.sks */,
 				0E1DD8311ED77279003AE270 /* gameEndNotification.sks */,
 			);
@@ -423,6 +426,7 @@
 				0E139B231EDE174400304128 /* SplashScreen.storyboard in Resources */,
 				0ED507DE1ECBDDA600E141C3 /* LaunchScreen.storyboard in Resources */,
 				0EA4CC541EDD1C74000515EB /* Level_4.json in Resources */,
+				0E0BCAAD1F6DFC62002B158A /* Cat3.sks in Resources */,
 				0E0BCAA91F6DBA88002B158A /* SpinningWood.sks in Resources */,
 				0E47E4881EDBDCBD0026CC7F /* Level_5.json in Resources */,
 				0EB857B41ED87E530003B4BD /* Resume.sks in Resources */,
