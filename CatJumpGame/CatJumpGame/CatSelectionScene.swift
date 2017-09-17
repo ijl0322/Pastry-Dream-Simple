@@ -15,9 +15,10 @@ class CatSelectionScene: SKScene {
     var leftCatNode: CatSpriteNode!
     var leftCatType = CatType.cat2
     var rightCatType = CatType.cat3
-    var switchLeftCat = false
+    var switchLeftCat = true
     var upButton: SKSpriteNode!
     var downButton: SKSpriteNode!
+    var arrow: SKSpriteNode!
     var pageNumber = 0
     
     override func didMove(to view: SKView) {
@@ -36,6 +37,11 @@ class CatSelectionScene: SKScene {
         downButton.position = CGPoint(x: 383, y: -330)
         downButton.zPosition = 2
         addChild(downButton)
+        
+        arrow = SKSpriteNode(texture: SKTexture(imageNamed: "arrow"))
+        arrow.zPosition = 2
+        animateArrow()
+        addChild(arrow)
         
         for i in 1...3 {
             let currentCat = CatType(raw: i + pageNumber)
@@ -82,6 +88,22 @@ class CatSelectionScene: SKScene {
         }
     }
     
+    func animateArrow() {
+        let bounce = SKAction.move(by: CGVector(dx: 50, dy: 0), duration: 0.4)
+        let reverse = bounce.reversed()
+        let sequence = SKAction.sequence([bounce, reverse])
+        
+        if switchLeftCat {
+            arrow.position = CGPoint(x: -467, y: -690)
+            arrow.run(SKAction.repeatForever(sequence), withKey: "bounce")
+        } else {
+            if !switchLeftCat {
+                arrow.position = CGPoint(x: 467, y: -690)
+                arrow.run(SKAction.repeatForever(sequence.reversed()), withKey: "bounce")
+            }
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard  let touch = touches.first else {
             return
@@ -89,11 +111,18 @@ class CatSelectionScene: SKScene {
         
         if let touchedNode = atPoint(touch.location(in: self)) as? SKSpriteNode {
             guard let nodeName = touchedNode.name else { return }
+            print("something is touched")
             if nodeName.characters.count > 6 && nodeName.substring(to: 6) == "button" {
                 if let num = Int(nodeName.substring(from: 6)){
                     switchCat(num: num, node: touchedNode)
                 }
             }
+        }
+        
+        if let _ = atPoint(touch.location(in: self)) as? CatSpriteNode {
+            print("switching")
+            switchLeftCat = !switchLeftCat
+            animateArrow()
         }
     }
     
@@ -101,6 +130,8 @@ class CatSelectionScene: SKScene {
         let newCat = CatType(raw: num)!
         print(newCat == leftCatType)
         print(newCat == rightCatType)
+        
+        // Disallow Duplicate cats
 //        if newCat == leftCatType || newCat == rightCatType {
 //            print("Duplicate Cat")
 //            return
@@ -114,6 +145,7 @@ class CatSelectionScene: SKScene {
             leftCatNode.changeCatTypeTo(newType: newCat)
             leftCatType = newCat
             UserData.shared.switchCat(newType: leftCatType, isLeftCat: true)
+            
         } else if UserData.shared.catsOwned[num] == 1 && !switchLeftCat{
             let oldCatButton = childNode(withName: "button\(rightCatType.rawValue)") as! SKSpriteNode
             oldCatButton.texture = SKTexture(imageNamed: "selectButton")
@@ -136,11 +168,14 @@ class CatSelectionScene: SKScene {
         rightCatNode.zPosition = 10
         rightCatNode.physicsBody?.isDynamic = false
         rightCatNode.physicsBody?.affectedByGravity = false
+        rightCatNode.name = "rightCat"
         
         leftCatNode.position = CGPoint(x: -171, y: -690)
         leftCatNode.zPosition = 10
         leftCatNode.physicsBody?.isDynamic = false
         leftCatNode.physicsBody?.affectedByGravity = false
+        leftCatNode.name = "leftCat"
+        
         addChild(rightCatNode)
         addChild(leftCatNode)
     }
