@@ -35,16 +35,24 @@ class MenuViewController: UIViewController {
         if status == 0 {
             SKTAudio.sharedInstance().playBackgroundMusic("MaltShopBop.mp3")
         }
-
+        
         if let view = self.view as! SKView? {
-            if let scene = SKScene(fileNamed: "CatSelectionScene") as? CatSelectionScene  {
+            if let scene = SKScene(fileNamed: "LevelSelectionScene") as? LevelSelectionScene  {
                 scene.scaleMode = .aspectFill
                 view.presentScene(scene)
             }
+            
+            view.ignoresSiblingOrder = true
         }
         
+//        if let view = self.view as! SKView? {
+//            if let scene = SKScene(fileNamed: "CatSelectionScene") as? CatSelectionScene  {
+//                scene.scaleMode = .aspectFill
+//                view.presentScene(scene)
+//            }
+//        }
         
-///////////////////// Uncomment for normal game ///////////////////
+///////////////////// Uncomment for tutorial ///////////////////
         
 //        if UserDefaults.standard.bool(forKey: "notFirstLaunch") {
 //            if let view = self.view as! SKView? {

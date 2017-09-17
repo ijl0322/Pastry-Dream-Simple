@@ -47,13 +47,13 @@ class LevelSelectionScene: SKScene, SKPhysicsContactDelegate{
         coinsLabel.position = CGPoint(x: 380, y: -990)
         addChild(coinsLabel)
         
-        let leftCat = CatSpriteNode(catType: .cat1, isLeftCat: true)
+        let leftCat = CatSpriteNode(catType: UserData.shared.leftCat, isLeftCat: true)
         leftCat.physicsBody?.isDynamic = false
         leftCat.position = CGPoint(x: -320, y: 630)
         leftCat.zPosition = 10
         addChild(leftCat)
         
-        let rightCat = CatSpriteNode(catType: .cat2, isLeftCat: false)
+        let rightCat = CatSpriteNode(catType: UserData.shared.rightCat, isLeftCat: false)
         rightCat.physicsBody?.isDynamic = false
         rightCat.position = CGPoint(x: 333, y: -704)
         rightCat.zPosition = 10

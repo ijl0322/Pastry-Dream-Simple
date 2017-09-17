@@ -46,9 +46,13 @@ class CatSelectionScene: SKScene {
         for i in 1...3 {
             let currentCat = CatType(raw: i + pageNumber)
             let owned = UserData.shared.catsOwned[i] == 1
+            let selected = currentCat == leftCatType || currentCat == rightCatType
             var buttonImageName = "unlockButton"
             var coinImageName = "coin"
-            if owned {
+            if owned && selected{
+                buttonImageName = "selectedButton"
+                coinImageName = "editButton"
+            } else if owned {
                 buttonImageName = "selectButton"
                 coinImageName = "editButton"
             }
@@ -96,10 +100,12 @@ class CatSelectionScene: SKScene {
         if switchLeftCat {
             arrow.position = CGPoint(x: -467, y: -690)
             arrow.run(SKAction.repeatForever(sequence), withKey: "bounce")
+            arrow.xScale = 1
         } else {
             if !switchLeftCat {
                 arrow.position = CGPoint(x: 467, y: -690)
-                arrow.run(SKAction.repeatForever(sequence.reversed()), withKey: "bounce")
+                arrow.run(SKAction.repeatForever(sequence), withKey: "bounce")
+                arrow.xScale = -1
             }
         }
     }
@@ -111,18 +117,14 @@ class CatSelectionScene: SKScene {
         
         if let touchedNode = atPoint(touch.location(in: self)) as? SKSpriteNode {
             guard let nodeName = touchedNode.name else { return }
-            print("something is touched")
             if nodeName.characters.count > 6 && nodeName.substring(to: 6) == "button" {
                 if let num = Int(nodeName.substring(from: 6)){
                     switchCat(num: num, node: touchedNode)
                 }
+            } else if nodeName == "leftCat" || nodeName == "rightCat" {
+                switchLeftCat = !switchLeftCat
+                animateArrow()
             }
-        }
-        
-        if let _ = atPoint(touch.location(in: self)) as? CatSpriteNode {
-            print("switching")
-            switchLeftCat = !switchLeftCat
-            animateArrow()
         }
     }
     
@@ -132,10 +134,10 @@ class CatSelectionScene: SKScene {
         print(newCat == rightCatType)
         
         // Disallow Duplicate cats
-//        if newCat == leftCatType || newCat == rightCatType {
-//            print("Duplicate Cat")
-//            return
-//        }
+        if newCat == leftCatType || newCat == rightCatType {
+            print("Duplicate Cat")
+            return
+        }
         
         if UserData.shared.catsOwned[num] == 1 && switchLeftCat{
             let oldCatButton = childNode(withName: "button\(leftCatType.rawValue)") as! SKSpriteNode

@@ -172,12 +172,18 @@ class CatSpriteNode: SKSpriteNode {
         tailNode.name = "tail"
         bodyNode.addChild(tailNode)
         
+        let levelTouchSensorNode = SKSpriteNode(texture: nil, color: UIColor.clear, size: CGSize(width: 330, height: 330))
+        levelTouchSensorNode.position = CGPoint(x: 0, y: 0)
+        levelTouchSensorNode.zPosition = 100
+        addChild(levelTouchSensorNode)
+        
         if isLeftCat {
             seatSide = .left
             name = "leftCat"
+            levelTouchSensorNode.name = "leftCat"
         } else {
             seatSide = .right
-            name = "rightCat"
+            levelTouchSensorNode.name = "rightCat"
         }
         didMoveToScene()
     }
