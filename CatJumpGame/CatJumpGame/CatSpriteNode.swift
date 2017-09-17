@@ -20,14 +20,19 @@ enum SeatSide: Int {
 
 enum CatType: Int, CustomStringConvertible {
     case unknown = 0, cat1, cat2, cat3
-    
+
     init?(raw: Int) {
         self.init(rawValue: raw)
     }
     
     var spriteName: String {
+        // Also add to catCount when you add a cat here
         let spriteNames = ["unknown","cat1", "cat2", "cat3"]
         return spriteNames[rawValue]
+    }
+    
+    var catCount: Int {
+        return 3
     }
     
     var price: Int {
@@ -174,9 +179,23 @@ class CatSpriteNode: SKSpriteNode {
             seatSide = .right
             name = "rightCat"
         }
-        
         didMoveToScene()
-        
+    }
+    
+    func changeCatTypeTo(newType: CatType) {
+        catType = newType
+        bodyNode.texture = SKTexture(imageNamed: catType.body)
+        headNode.texture = SKTexture(imageNamed: catType.head)
+        eyesNode.texture = SKTexture(imageNamed: catType.eyes)
+        mouthNode.texture = SKTexture(imageNamed: catType.mouth)
+        feetNode.texture = SKTexture(imageNamed: catType.feet)
+        tailNode.texture = SKTexture(imageNamed: catType.tail)
+        let textures = self.catType.blink
+        let blinkAnimation = SKAction.animate(with: textures,
+                                              timePerFrame: 0.1)
+        let waitAnimation = SKAction.wait(forDuration: 3)
+        let sequence = SKAction.sequence([blinkAnimation, blinkAnimation, waitAnimation])
+        eyesNode.run(SKAction.repeatForever(sequence), withKey: "eyes")
     }
     
     required init?(coder aDecoder: NSCoder) {

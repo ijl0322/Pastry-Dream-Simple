@@ -13,6 +13,8 @@ class CatSelectionScene: SKScene {
     
     var rightCatNode: CatSpriteNode!
     var leftCatNode: CatSpriteNode!
+    var leftCatType = CatType.cat2
+    var rightCatType = CatType.cat3
     var upButton: SKSpriteNode!
     var downButton: SKSpriteNode!
     var pageNumber = 0
@@ -36,6 +38,13 @@ class CatSelectionScene: SKScene {
         
         for i in 1...3 {
             let currentCat = CatType(raw: i + pageNumber)
+            let owned = UserData.shared.catsOwned[i] == 1
+            var buttonImageName = "unlockButton"
+            var coinImageName = "coin"
+            if owned {
+                buttonImageName = "selectButton"
+                coinImageName = "editButton"
+            }
             
             let catBlock = SKSpriteNode(texture: SKTexture(imageNamed: "catBlock"))
             catBlock.zPosition = 2
@@ -49,7 +58,7 @@ class CatSelectionScene: SKScene {
             catImage.name = "catImage\(i)"
             addChild(catImage)
             
-            let coinImage = SKSpriteNode(texture: SKTexture(imageNamed: "coin"))
+            let coinImage = SKSpriteNode(texture: SKTexture(imageNamed: coinImageName))
             coinImage.zPosition = 2
             coinImage.position = CGPoint(x: -22, y: 614 - (i-1)*330)
             coinImage.name = "coinImage\(i)"
@@ -64,7 +73,7 @@ class CatSelectionScene: SKScene {
             textLabel.name = "textLabel\(i)"
             addChild(textLabel)
             
-            let button = SKSpriteNode(texture: SKTexture(imageNamed: "selectButton"))
+            let button = SKSpriteNode(texture: SKTexture(imageNamed: buttonImageName))
             button.zPosition = 2
             button.name = "button\(i)"
             button.position = CGPoint(x: 125,y: 495 - (i-1)*330)
@@ -77,14 +86,24 @@ class CatSelectionScene: SKScene {
             return
         }
         
-        if let touchedNode =
-            atPoint(touch.location(in: self)) as? SKSpriteNode {
-            if let nodeName = touchedNode.name {
-                if nodeName.characters.count > 6 && nodeName.substring(to: 6) == "button" {
-                    print(nodeName)
-                    touchedNode.texture = SKTexture(imageNamed: "selectedButton")
+        if let touchedNode = atPoint(touch.location(in: self)) as? SKSpriteNode {
+            guard let nodeName = touchedNode.name else { return }
+            if nodeName.characters.count > 6 && nodeName.substring(to: 6) == "button" {
+                if let num = Int(nodeName.substring(from: 6)){
+                    switchCat(num: num, node: touchedNode)
                 }
             }
+        }
+    }
+    
+    func switchCat(num: Int, node: SKSpriteNode) {
+        if UserData.shared.catsOwned[num] == 1 {
+            let oldCatButton = childNode(withName: "button\(leftCatType.rawValue)") as! SKSpriteNode
+            oldCatButton.texture = SKTexture(imageNamed: "selectButton")
+            node.texture = SKTexture(imageNamed: "selectedButton")
+            let newCat = CatType(raw: num)!
+            leftCatNode.changeCatTypeTo(newType: newCat)
+            leftCatType = newCat
         }
     }
     

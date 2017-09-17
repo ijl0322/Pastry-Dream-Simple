@@ -20,6 +20,7 @@ class UserData {
     var levelStatus: [LevelCompleteType] = [.lose]
     var nickName = "Anonymous"
     var coins = 0
+    var catsOwned:[Int] = []
     var unlockedLevels: Int {
         return highScores.count
     }
@@ -50,6 +51,23 @@ class UserData {
             self.coins = coins
         } else {
             defaults.set(coins, forKey: "coins")
+        }
+        
+        if let catsOwned = defaults.array(forKey: "catsOwned") as? [Int] {
+            self.catsOwned = catsOwned
+            if catsOwned.count < CatType.cat1.catCount {
+                for _ in catsOwned.count..<CatType.cat1.catCount {
+                    self.catsOwned.append(0)
+                    defaults.set(self.catsOwned, forKey: "catsOwned")
+                }
+            }
+        } else {
+            for _ in 0...CatType.cat1.catCount {
+                self.catsOwned.append(0)
+            }
+            self.catsOwned[1] = 1
+            self.catsOwned[2] = 1
+            defaults.set(self.catsOwned, forKey: "catsOwned")
         }
     }
         
