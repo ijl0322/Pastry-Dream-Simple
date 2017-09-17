@@ -19,14 +19,14 @@ enum SeatSide: Int {
 }
 
 enum CatType: Int, CustomStringConvertible {
-    case unknown = 0, cat1, cat2
+    case unknown = 0, cat1, cat2, cat3
     
     init?(raw: Int) {
         self.init(rawValue: raw)
     }
     
     var spriteName: String {
-        let spriteNames = ["unknown","cat1", "cat2"]
+        let spriteNames = ["unknown","cat1", "cat2", "cat3"]
         return spriteNames[rawValue]
     }
     

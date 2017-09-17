@@ -402,12 +402,12 @@ extension GameScene {
         let leftCatxPosition = (seesawNode?.position.x)! - ((seesawNode?.frame.width)!/4)
         let catyPosition = (seesawNode?.position.y)! + (330)/2
         
-        rightCatNode = CatSpriteNode(catType: .cat2, isLeftCat: false)
+        rightCatNode = CatSpriteNode(catType: .cat3, isLeftCat: false)
         rightCatNode.position = CGPoint(x: rightCatxPosition, y: catyPosition)
         rightCatNode.zPosition = 20
         self.scene?.addChild(rightCatNode)
         
-        leftCatNode = CatSpriteNode(catType: .cat1, isLeftCat: true)
+        leftCatNode = CatSpriteNode(catType: .cat2, isLeftCat: true)
         leftCatNode.position = CGPoint(x: leftCatxPosition, y: catyPosition)
         leftCatNode.zPosition = 30
         self.scene?.addChild(leftCatNode)
