@@ -35,28 +35,39 @@ class MenuViewController: UIViewController {
         if status == 0 {
             SKTAudio.sharedInstance().playBackgroundMusic("MaltShopBop.mp3")
         }
-        
-        if UserDefaults.standard.bool(forKey: "notFirstLaunch") {
-            if let view = self.view as! SKView? {
-                if let scene = SKScene(fileNamed: "LevelSelectionScene") as? LevelSelectionScene  {
-                    scene.scaleMode = .aspectFill
-                    view.presentScene(scene)
-                }
-                
-                view.ignoresSiblingOrder = true
+
+        if let view = self.view as! SKView? {
+            if let scene = SKScene(fileNamed: "CatSelectionScene") as? CatSelectionScene  {
+                scene.scaleMode = .aspectFill
+                view.presentScene(scene)
             }
-            
-        } else {
-            if let view = self.view as! SKView? {
-                if let scene = SKScene(fileNamed: "TutorialScene1") {
-                    scene.scaleMode = .aspectFill
-                    view.presentScene(scene)
-                }
-    
-                view.ignoresSiblingOrder = true
-            }
-            UserDefaults.standard.set(true, forKey: "notFirstLaunch")
         }
+        
+        
+///////////////////// Uncomment for normal game ///////////////////
+        
+//        if UserDefaults.standard.bool(forKey: "notFirstLaunch") {
+//            if let view = self.view as! SKView? {
+//                if let scene = SKScene(fileNamed: "LevelSelectionScene") as? LevelSelectionScene  {
+//                    scene.scaleMode = .aspectFill
+//                    view.presentScene(scene)
+//                }
+//                
+//                view.ignoresSiblingOrder = true
+//            }
+//            
+//        } else {
+//            if let view = self.view as! SKView? {
+//                if let scene = SKScene(fileNamed: "TutorialScene1") {
+//                    scene.scaleMode = .aspectFill
+//                    view.presentScene(scene)
+//                }
+//    
+//                view.ignoresSiblingOrder = true
+//            }
+//            UserDefaults.standard.set(true, forKey: "notFirstLaunch")
+//        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

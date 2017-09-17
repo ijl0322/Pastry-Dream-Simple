@@ -30,6 +30,15 @@ enum CatType: Int, CustomStringConvertible {
         return spriteNames[rawValue]
     }
     
+    var price: Int {
+        let price = [0, 0, 0, 10000]
+        return price[rawValue]
+    }
+    
+    var image: String {
+        return "\(spriteName)_still"
+    }
+    
     var body: String {
         return "\(spriteName)_body"
     }

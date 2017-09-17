@@ -54,6 +54,7 @@
 		0E68670C1ED518C5002E7886 /* BradBunR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E68670B1ED51850002E7886 /* BradBunR.ttf */; };
 		0E68670E1ED51B9E002E7886 /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E68670D1ED51B9E002E7886 /* MKOutlinedLabelNode.swift */; };
 		0E6931A11F6EECA700D1778B /* CatSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6931A01F6EECA700D1778B /* CatSelectionScene.swift */; };
+		0E6931A31F6EFF8C00D1778B /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6931A21F6EFF8C00D1778B /* String+Extension.swift */; };
 		0E6F45911ECE18A80071F818 /* BreadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F45901ECE18A80071F818 /* BreadNode.swift */; };
 		0E8441B61ED9147C00F58E42 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8441B51ED9147C00F58E42 /* RootViewController.swift */; };
 		0E8441B81ED914A700F58E42 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8441B71ED914A700F58E42 /* MenuViewController.swift */; };
@@ -125,6 +126,7 @@
 		0E68670B1ED51850002E7886 /* BradBunR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BradBunR.ttf; sourceTree = "<group>"; };
 		0E68670D1ED51B9E002E7886 /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
 		0E6931A01F6EECA700D1778B /* CatSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatSelectionScene.swift; sourceTree = "<group>"; };
+		0E6931A21F6EFF8C00D1778B /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		0E6F45901ECE18A80071F818 /* BreadNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadNode.swift; sourceTree = "<group>"; };
 		0E8441B51ED9147C00F58E42 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		0E8441B71ED914A700F58E42 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				0E511C4D1ECE008A00F3E7A9 /* CGFloat+Extensions.swift */,
+				0E6931A21F6EFF8C00D1778B /* String+Extension.swift */,
 				0E511C4E1ECE008A00F3E7A9 /* CGPoint+Extensions.swift */,
 				0E511C4F1ECE008A00F3E7A9 /* CGVector+Extensions.swift */,
 				0E511C501ECE008A00F3E7A9 /* Int+Extensions.swift */,
@@ -520,6 +523,7 @@
 				0E6931A11F6EECA700D1778B /* CatSelectionScene.swift in Sources */,
 				0E14EA631ED92AF500716762 /* LevelSelectionScene.swift in Sources */,
 				0E0A72EA1ECCF03700022BCE /* SeesawNode.swift in Sources */,
+				0E6931A31F6EFF8C00D1778B /* String+Extension.swift in Sources */,
 				0E12EEA51ED13EB600B1BB40 /* Array2D.swift in Sources */,
 				0E511C631ECE008A00F3E7A9 /* SKTTimingFunctions.swift in Sources */,
 				0E511C5E1ECE008A00F3E7A9 /* SKAction+SpecialEffects.swift in Sources */,
