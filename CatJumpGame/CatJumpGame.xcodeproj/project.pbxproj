@@ -53,9 +53,11 @@
 		0E6332E11EDD2D9A00A48044 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E6332E01EDD2D9A00A48044 /* Settings.bundle */; };
 		0E68670C1ED518C5002E7886 /* BradBunR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E68670B1ED51850002E7886 /* BradBunR.ttf */; };
 		0E68670E1ED51B9E002E7886 /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E68670D1ED51B9E002E7886 /* MKOutlinedLabelNode.swift */; };
+		0E6931A11F6EECA700D1778B /* CatSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6931A01F6EECA700D1778B /* CatSelectionScene.swift */; };
 		0E6F45911ECE18A80071F818 /* BreadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6F45901ECE18A80071F818 /* BreadNode.swift */; };
 		0E8441B61ED9147C00F58E42 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8441B51ED9147C00F58E42 /* RootViewController.swift */; };
 		0E8441B81ED914A700F58E42 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8441B71ED914A700F58E42 /* MenuViewController.swift */; };
+		0EA2032E1F6EEA46008D0AAF /* CatSelectionScenePrototype.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0EA2032D1F6EEA46008D0AAF /* CatSelectionScenePrototype.sks */; };
 		0EA4CC541EDD1C74000515EB /* Level_4.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EA4CC531EDD1C74000515EB /* Level_4.json */; };
 		0EB857B41ED87E530003B4BD /* Resume.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0EB857B31ED87E530003B4BD /* Resume.sks */; };
 		0EB857B61ED87F9E0003B4BD /* GamePausedNotificationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB857B51ED87F9E0003B4BD /* GamePausedNotificationNode.swift */; };
@@ -69,6 +71,7 @@
 		0ED507DE1ECBDDA600E141C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ED507DC1ECBDDA600E141C3 /* LaunchScreen.storyboard */; };
 		0EE2BD3E1ED9CB34007AF6A7 /* LevelButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE2BD3D1ED9CB34007AF6A7 /* LevelButtonNode.swift */; };
 		0EEC293D1ECBED900003623D /* Cat1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0EEC293C1ECBED900003623D /* Cat1.sks */; };
+		0EF8E0801F6ED574006B7E24 /* CatSelectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0EF8E07F1F6ED574006B7E24 /* CatSelectionScene.sks */; };
 		C12C7C68C161058C55D64D85 /* Pods_CatJumpGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6196CAA3420BBD19F27673 /* Pods_CatJumpGame.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,9 +124,11 @@
 		0E6332E01EDD2D9A00A48044 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0E68670B1ED51850002E7886 /* BradBunR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BradBunR.ttf; sourceTree = "<group>"; };
 		0E68670D1ED51B9E002E7886 /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
+		0E6931A01F6EECA700D1778B /* CatSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatSelectionScene.swift; sourceTree = "<group>"; };
 		0E6F45901ECE18A80071F818 /* BreadNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadNode.swift; sourceTree = "<group>"; };
 		0E8441B51ED9147C00F58E42 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		0E8441B71ED914A700F58E42 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0EA2032D1F6EEA46008D0AAF /* CatSelectionScenePrototype.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatSelectionScenePrototype.sks; sourceTree = "<group>"; };
 		0EA4CC531EDD1C74000515EB /* Level_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_4.json; sourceTree = "<group>"; };
 		0EB857B31ED87E530003B4BD /* Resume.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Resume.sks; sourceTree = "<group>"; };
 		0EB857B51ED87F9E0003B4BD /* GamePausedNotificationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePausedNotificationNode.swift; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 		0ED507DF1ECBDDA600E141C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EE2BD3D1ED9CB34007AF6A7 /* LevelButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelButtonNode.swift; sourceTree = "<group>"; };
 		0EEC293C1ECBED900003623D /* Cat1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cat1.sks; sourceTree = "<group>"; };
+		0EF8E07F1F6ED574006B7E24 /* CatSelectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CatSelectionScene.sks; sourceTree = "<group>"; };
 		9D420646326DF16C9275D278 /* Pods-CatJumpGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatJumpGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatJumpGame/Pods-CatJumpGame.release.xcconfig"; sourceTree = "<group>"; };
 		9F6196CAA3420BBD19F27673 /* Pods_CatJumpGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatJumpGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -178,6 +184,8 @@
 				0ED507CF1ECBDDA600E141C3 /* GameScene.sks */,
 				0E14EA601ED92A8E00716762 /* LevelSelectionScene.sks */,
 				0E14EA621ED92AF500716762 /* LevelSelectionScene.swift */,
+				0EF8E07F1F6ED574006B7E24 /* CatSelectionScene.sks */,
+				0E6931A01F6EECA700D1778B /* CatSelectionScene.swift */,
 				0E0BCAA81F6DBA88002B158A /* SpinningWood.sks */,
 			);
 			name = SKScenes;
@@ -226,6 +234,7 @@
 		0E1DD8341ED774AE003AE270 /* PrototypeScenes */ = {
 			isa = PBXGroup;
 			children = (
+				0EA2032D1F6EEA46008D0AAF /* CatSelectionScenePrototype.sks */,
 				0EB857B31ED87E530003B4BD /* Resume.sks */,
 				0EEC293C1ECBED900003623D /* Cat1.sks */,
 				0ECBA3D01ED38EDD0067C983 /* Cat.sks */,
@@ -410,6 +419,7 @@
 			files = (
 				0EC679F11EDDF3AC002B03FD /* TutorialScene1.sks in Resources */,
 				0ED507D91ECBDDA600E141C3 /* Main.storyboard in Resources */,
+				0EF8E0801F6ED574006B7E24 /* CatSelectionScene.sks in Resources */,
 				0E47E4861EDBDCBD0026CC7F /* Level_3.json in Resources */,
 				0E47E4851EDBDCBD0026CC7F /* Level_2.json in Resources */,
 				0ED507D01ECBDDA600E141C3 /* GameScene.sks in Resources */,
@@ -426,6 +436,7 @@
 				0E139B231EDE174400304128 /* SplashScreen.storyboard in Resources */,
 				0ED507DE1ECBDDA600E141C3 /* LaunchScreen.storyboard in Resources */,
 				0EA4CC541EDD1C74000515EB /* Level_4.json in Resources */,
+				0EA2032E1F6EEA46008D0AAF /* CatSelectionScenePrototype.sks in Resources */,
 				0E0BCAAD1F6DFC62002B158A /* Cat3.sks in Resources */,
 				0E0BCAA91F6DBA88002B158A /* SpinningWood.sks in Resources */,
 				0E47E4881EDBDCBD0026CC7F /* Level_5.json in Resources */,
@@ -506,6 +517,7 @@
 				0ED507D41ECBDDA600E141C3 /* GameScene.swift in Sources */,
 				0E511C601ECE008A00F3E7A9 /* SKNode+Extensions.swift in Sources */,
 				0E12EEAE1ED143D600B1BB40 /* Level.swift in Sources */,
+				0E6931A11F6EECA700D1778B /* CatSelectionScene.swift in Sources */,
 				0E14EA631ED92AF500716762 /* LevelSelectionScene.swift in Sources */,
 				0E0A72EA1ECCF03700022BCE /* SeesawNode.swift in Sources */,
 				0E12EEA51ED13EB600B1BB40 /* Array2D.swift in Sources */,
