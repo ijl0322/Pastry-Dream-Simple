@@ -262,6 +262,17 @@ extension GameScene {
                            transition: SKTransition.flipVertical(withDuration: 0.5))
     }
     
+    func transitionToCatSelect() {
+        print("Transitionaing to cat select")
+        guard let newScene = SKScene(fileNamed: "CatSelectionScene")
+            as? CatSelectionScene else {
+                fatalError("Cannot load cat selection scene")
+        }
+        newScene.scaleMode = .aspectFill
+        view!.presentScene(newScene,
+                           transition: SKTransition.flipVertical(withDuration: 0.5))
+    }
+    
     // Draw a red rectangle around the playable area (an area that can show properly on all devices)
     func debugDrawPlayableArea(playableRect: CGRect) {
         let shape = SKShapeNode()
@@ -481,14 +492,8 @@ extension GameScene {
                     transitionToScene(level: level.levelNum + 1)
                 } else if touchedNode.name == ButtonName.levels {
                     transitionToLevelSelect()
-                } else if touchedNode.name == ButtonName.leaderBoard {
-                    let gameEndNotice = childNode(withName: "gameEndNotification")
-                    gameEndNotice?.removeFromParent()
-                    var leaderBoard = childNode(withName: "leaderBoard")
-                    if leaderBoard == nil {
-                        leaderBoard = LeaderBoardNode(level: level.levelNum, levelStatus: level.levelCompleteStatus(score: score))
-                        self.addChild(leaderBoard!)
-                    }
+                } else if touchedNode.name == ButtonName.catSelect {
+                    transitionToCatSelect()
                 }
             }
         case .reload:

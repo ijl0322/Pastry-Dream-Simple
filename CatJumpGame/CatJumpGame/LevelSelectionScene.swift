@@ -81,6 +81,9 @@ class LevelSelectionScene: SKScene, SKPhysicsContactDelegate{
                     transitionToScene(level: (levelButton?.level)!)
                 }
             }
+            if touchedNode.name == "catSelectionButton" {
+                transitionToCatSelect()
+            }
         }
     }
     
@@ -100,6 +103,17 @@ class LevelSelectionScene: SKScene, SKPhysicsContactDelegate{
                                transition: SKTransition.flipVertical(withDuration: 0.5))
             
         }
+    }
+    
+    func transitionToCatSelect() {
+        print("Transitionaing to cat select")
+        guard let newScene = SKScene(fileNamed: "CatSelectionScene")
+            as? CatSelectionScene else {
+                fatalError("Cannot load cat selection scene")
+        }
+        newScene.scaleMode = .aspectFill
+        view!.presentScene(newScene,
+                           transition: SKTransition.flipVertical(withDuration: 0.5))
     }
     
     override func update(_ currentTime: TimeInterval) {

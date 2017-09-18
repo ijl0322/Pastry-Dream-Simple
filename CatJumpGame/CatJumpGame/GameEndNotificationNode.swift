@@ -9,13 +9,14 @@
 enum ButtonName {
     static let home = "homeButton"
     static let next = "nextButton"
-    static let leaderBoard = "leaderBoardButton"
+    static let leaderBoard = "catSelectButton"
     static let levels = "levelsButton"
     static let replay = "replayButton"
     static let no = "noButton"
     static let yes = "yesButton"
     static let noNext = "noNextButton"
     static let ok = "okButton"
+    static let catSelect = "catSelectButton"
 }
 
 import SpriteKit
@@ -30,7 +31,7 @@ class GameEndNotificationNode: SKSpriteNode {
     var levelsButton: SKSpriteNode!
     var replayButton: SKSpriteNode!
     var nextButton: SKSpriteNode!
-    var leaderBoardButton: SKSpriteNode!
+    var catSelectButton: SKSpriteNode!
     var score = 0
     var level = 0
     var levelStatus: LevelCompleteType = .lose
@@ -151,11 +152,11 @@ class GameEndNotificationNode: SKSpriteNode {
             addChild(nextButton)
         }
 
-        leaderBoardButton = SKSpriteNode(imageNamed: ButtonName.leaderBoard)
-        leaderBoardButton.position = CGPoint(x: 310, y: -534)
-        leaderBoardButton.zPosition = 30
-        leaderBoardButton.name = ButtonName.leaderBoard
-        addChild(leaderBoardButton)
+        catSelectButton = SKSpriteNode(imageNamed: ButtonName.catSelect)
+        catSelectButton.position = CGPoint(x: 310, y: -534)
+        catSelectButton.zPosition = 30
+        catSelectButton.name = ButtonName.catSelect
+        addChild(catSelectButton)
     }
     
     func addGreyStars() {

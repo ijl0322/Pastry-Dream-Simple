@@ -43,6 +43,14 @@ class CatSelectionScene: SKScene {
         animateArrow()
         addChild(arrow)
         
+        let coinsLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
+        coinsLabel.fontColor = UIColor.red
+        coinsLabel.text = "\(UserData.shared.coins)"
+        coinsLabel.fontSize = 50
+        coinsLabel.zPosition = 15
+        coinsLabel.position = CGPoint(x: 380, y: -990)
+        addChild(coinsLabel)
+        
         for i in 1...3 {
             let currentCat = CatType(raw: i + pageNumber)
             let owned = UserData.shared.catsOwned[i] == 1
@@ -64,20 +72,20 @@ class CatSelectionScene: SKScene {
             addChild(catBlock)
             
             let catImage = SKSpriteNode(texture: SKTexture(imageNamed: (currentCat?.image)!), color: UIColor.clear, size: CGSize(width: 240, height: 240))
-            catImage.zPosition = 2
+            catImage.zPosition = 3
             catImage.position = CGPoint(x: -191, y: 517 - (i-1)*330)
             catImage.name = "catImage\(i)"
             addChild(catImage)
             
             let coinImage = SKSpriteNode(texture: SKTexture(imageNamed: coinImageName))
-            coinImage.zPosition = 2
+            coinImage.zPosition = 3
             coinImage.position = CGPoint(x: -22, y: 614 - (i-1)*330)
             coinImage.name = "coinImage\(i)"
             addChild(coinImage)
             
             let textLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
             textLabel.text = "\((currentCat?.price)!)"
-            textLabel.zPosition = 2
+            textLabel.zPosition = 3
             textLabel.fontSize = 72
             textLabel.fontColor = UIColor.black
             textLabel.position = CGPoint(x: 154, y: 592 - (i-1)*330)
@@ -85,7 +93,7 @@ class CatSelectionScene: SKScene {
             addChild(textLabel)
             
             let button = SKSpriteNode(texture: SKTexture(imageNamed: buttonImageName))
-            button.zPosition = 2
+            button.zPosition = 3
             button.name = "button\(i)"
             button.position = CGPoint(x: 125,y: 495 - (i-1)*330)
             addChild(button)
@@ -124,6 +132,8 @@ class CatSelectionScene: SKScene {
             } else if nodeName == "leftCat" || nodeName == "rightCat" {
                 switchLeftCat = !switchLeftCat
                 animateArrow()
+            } else if nodeName == "levelsLongButton" {
+                transitionToLevelSelect()
             }
         }
     }
@@ -182,4 +192,14 @@ class CatSelectionScene: SKScene {
         addChild(leftCatNode)
     }
 
+    func transitionToLevelSelect() {
+        print("Transitionaing to level select")
+        guard let newScene = SKScene(fileNamed: "LevelSelectionScene")
+            as? LevelSelectionScene else {
+                fatalError("Cannot load level selection scene")
+        }
+        newScene.scaleMode = .aspectFill
+        view!.presentScene(newScene,
+                           transition: SKTransition.flipVertical(withDuration: 0.5))
+    }
 }
