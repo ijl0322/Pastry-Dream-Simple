@@ -15,6 +15,15 @@ class RootViewController: UIViewController {
         
     }
     
+    @IBAction func resetButton(_ sender: UIButton) {
+        UserData.shared.reset()
+    }
+    
+    
+    @IBAction func coinsButton(_ sender: UIButton) {
+        UserData.shared.addCoins()
+    }
+
     @IBAction func unwindToRoot(_ sender: UIStoryboardSegue) {
         
     }

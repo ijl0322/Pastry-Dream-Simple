@@ -112,10 +112,10 @@ class LeaderBoardNode: SKSpriteNode {
             addChild(nextButton)
         }
         
-        leaderBoardButton = SKSpriteNode(imageNamed: ButtonName.leaderBoard)
+        leaderBoardButton = SKSpriteNode(imageNamed: ButtonName.catSelect)
         leaderBoardButton.position = CGPoint(x: 310, y: -534)
         leaderBoardButton.zPosition = 30
-        leaderBoardButton.name = ButtonName.leaderBoard
+        leaderBoardButton.name = ButtonName.catSelect
         addChild(leaderBoardButton)
     }
     

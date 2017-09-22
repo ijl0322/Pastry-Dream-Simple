@@ -61,6 +61,22 @@
                                     <constraint firstItem="FRt-jK-xs5" firstAttribute="width" secondItem="YLb-2p-EHq" secondAttribute="width" multiplier="0.3" constant="14.200000000000003" id="wHA-vg-IJS"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxj-1g-gcC">
+                                <rect key="frame" x="20" y="20" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButton:" destination="jA8-kJ-48X" eventType="touchUpInside" id="jg5-IA-luQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anD-7M-PQT">
+                                <rect key="frame" x="303" y="20" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Coins!"/>
+                                <connections>
+                                    <action selector="coinsButton:" destination="jA8-kJ-48X" eventType="touchUpInside" id="LKb-qX-Iv0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -93,7 +109,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Grh-mU-end">
-                                <rect key="frame" x="29.5" y="258.5" width="316" height="150"/>
+                                <rect key="frame" x="30" y="258.5" width="316" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIA-CP-p4e">
                                         <rect key="frame" x="0.0" y="0.0" width="316" height="55"/>

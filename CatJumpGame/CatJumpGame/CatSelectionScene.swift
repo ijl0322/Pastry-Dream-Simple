@@ -13,8 +13,10 @@ class CatSelectionScene: SKScene {
     
     var rightCatNode: CatSpriteNode!
     var leftCatNode: CatSpriteNode!
-    var leftCatType = CatType.cat2
-    var rightCatType = CatType.cat3
+    var blocksHolder: SKSpriteNode!
+    var selectionBackground: SKSpriteNode!
+    var leftCatType = CatType.cat1
+    var rightCatType = CatType.cat2
     var switchLeftCat = true
     var upButton: SKSpriteNode!
     var downButton: SKSpriteNode!
@@ -22,23 +24,28 @@ class CatSelectionScene: SKScene {
     var pageNumber = 0
     
     override func didMove(to view: SKView) {
+        leftCatType = UserData.shared.leftCat
+        rightCatType = UserData.shared.rightCat
+        selectionBackground = childNode(withName: "selectionBackground") as! SKSpriteNode
+        populateBlocks()
         addCats()
         addButtons()
     }
     
     func addButtons() {
-        
-        upButton = SKSpriteNode(texture: SKTexture(imageNamed: "upButton"))
+        upButton = SKSpriteNode(texture: SKTexture(imageNamed: ButtonName.noUp))
         upButton.position = CGPoint(x: 383, y: 735)
         upButton.zPosition = 2
+        upButton.name = ButtonName.up
         addChild(upButton)
         
-        downButton = SKSpriteNode(texture: SKTexture(imageNamed: "downButton"))
+        downButton = SKSpriteNode(texture: SKTexture(imageNamed: ButtonName.down))
         downButton.position = CGPoint(x: 383, y: -330)
         downButton.zPosition = 2
+        downButton.name = ButtonName.down
         addChild(downButton)
         
-        arrow = SKSpriteNode(texture: SKTexture(imageNamed: "arrow"))
+        arrow = SKSpriteNode(texture: SKTexture(imageNamed: ButtonName.arrow))
         arrow.zPosition = 2
         animateArrow()
         addChild(arrow)
@@ -50,53 +57,63 @@ class CatSelectionScene: SKScene {
         coinsLabel.zPosition = 15
         coinsLabel.position = CGPoint(x: 380, y: -990)
         addChild(coinsLabel)
+    }
+    
+    func populateBlocks() {
+        blocksHolder = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 1536, height: 2048))
+        addChild(blocksHolder)
         
         for i in 1...3 {
-            let currentCat = CatType(raw: i + pageNumber)
-            let owned = UserData.shared.catsOwned[i] == 1
+            let catNum = i + pageNumber * 3
+            guard let currentCat = CatType(raw: catNum) else {
+                return
+            }
+            
+            let owned = UserData.shared.catsOwned[catNum] == 1
+            dump(UserData.shared.catsOwned)
             let selected = currentCat == leftCatType || currentCat == rightCatType
-            var buttonImageName = "unlockButton"
-            var coinImageName = "coin"
+            var buttonImageName = ButtonName.unlock
+            var coinImageName = ButtonName.coin
             if owned && selected{
-                buttonImageName = "selectedButton"
-                coinImageName = "editButton"
+                buttonImageName = ButtonName.selected
+                coinImageName = ButtonName.edit
             } else if owned {
-                buttonImageName = "selectButton"
-                coinImageName = "editButton"
+                buttonImageName = ButtonName.select
+                coinImageName = ButtonName.edit
             }
             
             let catBlock = SKSpriteNode(texture: SKTexture(imageNamed: "catBlock"))
             catBlock.zPosition = 2
             catBlock.position = CGPoint(x: 0, y: 540 - (i-1)*330)
-            catBlock.name = "catBlock\(i)"
-            addChild(catBlock)
+            catBlock.name = "catBlock\(catNum)"
+            blocksHolder.addChild(catBlock)
             
-            let catImage = SKSpriteNode(texture: SKTexture(imageNamed: (currentCat?.image)!), color: UIColor.clear, size: CGSize(width: 240, height: 240))
+            let catImage = SKSpriteNode(texture: SKTexture(imageNamed: currentCat.image), color: UIColor.clear, size: CGSize(width: 240, height: 240))
             catImage.zPosition = 3
             catImage.position = CGPoint(x: -191, y: 517 - (i-1)*330)
-            catImage.name = "catImage\(i)"
-            addChild(catImage)
+            catImage.name = "catImage\(catNum)"
+            blocksHolder.addChild(catImage)
             
             let coinImage = SKSpriteNode(texture: SKTexture(imageNamed: coinImageName))
             coinImage.zPosition = 3
             coinImage.position = CGPoint(x: -22, y: 614 - (i-1)*330)
-            coinImage.name = "coinImage\(i)"
-            addChild(coinImage)
+            coinImage.name = "coinImage\(catNum)"
+            blocksHolder.addChild(coinImage)
             
             let textLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
-            textLabel.text = "\((currentCat?.price)!)"
+            textLabel.text = "\(currentCat.price)"
             textLabel.zPosition = 3
             textLabel.fontSize = 72
             textLabel.fontColor = UIColor.black
             textLabel.position = CGPoint(x: 154, y: 592 - (i-1)*330)
-            textLabel.name = "textLabel\(i)"
-            addChild(textLabel)
+            textLabel.name = "textLabel\(catNum)"
+            blocksHolder.addChild(textLabel)
             
             let button = SKSpriteNode(texture: SKTexture(imageNamed: buttonImageName))
             button.zPosition = 3
-            button.name = "button\(i)"
+            button.name = "button\(catNum)"
             button.position = CGPoint(x: 125,y: 495 - (i-1)*330)
-            addChild(button)
+            blocksHolder.addChild(button)
         }
     }
     
@@ -132,9 +149,48 @@ class CatSelectionScene: SKScene {
             } else if nodeName == "leftCat" || nodeName == "rightCat" {
                 switchLeftCat = !switchLeftCat
                 animateArrow()
-            } else if nodeName == "levelsLongButton" {
+            } else if nodeName == ButtonName.levelsLong {
                 transitionToLevelSelect()
+            } else if nodeName == ButtonName.down && (pageNumber + 1) * 3 < CatType.cat1.catCount{
+                handlePageChange(isUp: false)
+            } else if nodeName == ButtonName.up && pageNumber > 0 {
+                handlePageChange(isUp: true)
+            } else if nodeName == ButtonName.no {
+                removeUnlockNotice()
             }
+        }
+    }
+    
+    func removeUnlockNotice() {
+        blocksHolder.removeFromParent()
+        populateBlocks()
+        selectionBackground.texture = SKTexture(imageNamed: "catSelect")
+    }
+    
+    func handlePageChange(isUp: Bool) {
+        
+        if isUp {
+            pageNumber -= 1
+            blocksHolder.removeFromParent()
+            populateBlocks()
+        } else {
+            pageNumber += 1
+            upButton.texture = SKTexture(imageNamed: ButtonName.up)
+            blocksHolder.removeFromParent()
+            populateBlocks()
+        }
+        
+        let noUp = pageNumber == 0
+        let noDown = (pageNumber + 1) * 3 >= CatType.cat1.catCount
+        
+        if noUp && !noDown{
+            upButton.texture = SKTexture(imageNamed: ButtonName.noUp)
+            downButton.texture = SKTexture(imageNamed: ButtonName.down)
+        }
+        
+        if noDown && !noUp {
+            downButton.texture = SKTexture(imageNamed: ButtonName.noDown)
+            upButton.texture = SKTexture(imageNamed: ButtonName.up)
         }
     }
     
@@ -145,32 +201,80 @@ class CatSelectionScene: SKScene {
         
         // Disallow Duplicate cats
         if newCat == leftCatType || newCat == rightCatType {
-            print("Duplicate Cat")
             return
         }
         
+//        print(num)
+//        dump(UserData.shared.catsOwned)
+        
         if UserData.shared.catsOwned[num] == 1 && switchLeftCat{
-            let oldCatButton = childNode(withName: "button\(leftCatType.rawValue)") as! SKSpriteNode
-            oldCatButton.texture = SKTexture(imageNamed: "selectButton")
-            node.texture = SKTexture(imageNamed: "selectedButton")
-
+            
+            node.texture = SKTexture(imageNamed: ButtonName.selected)
             leftCatNode.changeCatTypeTo(newType: newCat)
+            UserData.shared.switchCat(newType: newCat, isLeftCat: true)
+            if let oldCatButton = childNode(withName: "//button\(leftCatType.rawValue)") as? SKSpriteNode {
+                oldCatButton.texture = SKTexture(imageNamed: ButtonName.select)
+            }
             leftCatType = newCat
-            UserData.shared.switchCat(newType: leftCatType, isLeftCat: true)
             
         } else if UserData.shared.catsOwned[num] == 1 && !switchLeftCat{
-            let oldCatButton = childNode(withName: "button\(rightCatType.rawValue)") as! SKSpriteNode
-            oldCatButton.texture = SKTexture(imageNamed: "selectButton")
-            node.texture = SKTexture(imageNamed: "selectedButton")
             
+            node.texture = SKTexture(imageNamed: ButtonName.selected)
             rightCatNode.changeCatTypeTo(newType: newCat)
+            UserData.shared.switchCat(newType: newCat, isLeftCat: false)
+            if let oldCatButton = childNode(withName: "//button\(rightCatType.rawValue)") as? SKSpriteNode {
+                oldCatButton.texture = SKTexture(imageNamed: ButtonName.select)
+            }
             rightCatType = newCat
-            UserData.shared.switchCat(newType: rightCatType, isLeftCat: false)
+        }
+        
+        if UserData.shared.catsOwned[num] != 1 {
+            presentUnlockCat(num: num)
         }
     }
     
-    func addCats() {
+    func presentUnlockCat(num: Int) {
+        guard let cat = CatType.init(raw: num) else {
+            return
+        }
         
+        selectionBackground.texture = SKTexture(imageNamed: "unlockNotice")
+        
+        print("unlock this cat ?")
+        blocksHolder.removeFromParent()
+        upButton.isHidden = true
+        downButton.isHidden = true
+        arrow.isHidden = true
+        blocksHolder = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 1536, height: 2048))
+        blocksHolder.zPosition = 10
+        addChild(blocksHolder)
+        
+        let yesButton = SKSpriteNode(texture: SKTexture(imageNamed: ButtonName.yes))
+        yesButton.position = CGPoint(x: -295,y: -343)
+        yesButton.name = ButtonName.yes
+        let noButton = SKSpriteNode(texture: SKTexture(imageNamed: ButtonName.no))
+        noButton.position = CGPoint(x: 295,y: -343)
+        noButton.name = ButtonName.no
+        blocksHolder.addChild(yesButton)
+        blocksHolder.addChild(noButton)
+        
+        let priceLabel = MKOutlinedLabelNode(fontNamed: "BradyBunchRemastered", fontSize: 140)
+        priceLabel.borderWidth = 10
+        priceLabel.borderOffset = CGPoint(x: -3, y: -3)
+        priceLabel.borderColor = UIColor.red
+        priceLabel.fontColor = UIColor.white
+        priceLabel.outlinedText = "\(cat.price)"
+        priceLabel.zPosition = 15
+        priceLabel.position = CGPoint(x: 120, y: -80)
+        blocksHolder.addChild(priceLabel)
+        
+        let catImage = SKSpriteNode(texture: SKTexture(imageNamed: cat.image), color: UIColor.clear, size: CGSize(width: 500, height: 500))
+        catImage.zPosition = 3
+        catImage.position = CGPoint(x: 0, y: 350)
+        blocksHolder.addChild(catImage)
+    }
+    
+    func addCats() {
         leftCatType = UserData.shared.leftCat
         rightCatType = UserData.shared.rightCat
         rightCatNode = CatSpriteNode(catType: rightCatType, isLeftCat: false)

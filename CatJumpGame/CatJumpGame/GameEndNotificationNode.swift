@@ -6,18 +6,6 @@
 //  Copyright © 2017 isabeljlee. All rights reserved.
 //
 
-enum ButtonName {
-    static let home = "homeButton"
-    static let next = "nextButton"
-    static let leaderBoard = "catSelectButton"
-    static let levels = "levelsButton"
-    static let replay = "replayButton"
-    static let no = "noButton"
-    static let yes = "yesButton"
-    static let noNext = "noNextButton"
-    static let ok = "okButton"
-    static let catSelect = "catSelectButton"
-}
 
 import SpriteKit
 class GameEndNotificationNode: SKSpriteNode {

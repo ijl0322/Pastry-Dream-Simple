@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             addCatAndSeesaw()
             timeLabel.text = (timeLimit - elapsedTime).secondsToFormatedString()
         }
-        view.showsPhysics = true
+        //view.showsPhysics = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

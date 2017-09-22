@@ -77,8 +77,12 @@ class UserData {
         
         if let catsOwned = defaults.array(forKey: "catsOwned") as? [Int] {
             self.catsOwned = catsOwned
-            if catsOwned.count < CatType.cat1.catCount {
-                for _ in catsOwned.count..<CatType.cat1.catCount {
+            print(catsOwned.count)
+            print(CatType.cat1.catCount)
+            if catsOwned.count <= CatType.cat1.catCount {
+                print("there are new cats")
+                for _ in catsOwned.count...CatType.cat1.catCount + 1 {
+                    print("adding a 0")
                     self.catsOwned.append(0)
                     defaults.set(self.catsOwned, forKey: "catsOwned")
                 }
@@ -89,6 +93,7 @@ class UserData {
             }
             self.catsOwned[1] = 1
             self.catsOwned[2] = 1
+            self.catsOwned[4] = 1
             defaults.set(self.catsOwned, forKey: "catsOwned")
         }
     }
@@ -156,4 +161,24 @@ class UserData {
         defaults.set(highScores, forKey: "highScores")
         defaults.set(levelStatusToRaw(), forKey: "levelStatus")
     }
+    
+    /////////////// Testing Functions ////////////////
+    
+    func addCoins() {
+        defaults.set(100005, forKey: "coins")
+        coins = 100005
+    }
+    
+    func reset() {
+        catsOwned = []
+        for _ in 0...CatType.cat1.catCount {
+            self.catsOwned.append(0)
+        }
+        self.catsOwned[1] = 1
+        self.catsOwned[2] = 1
+        self.catsOwned[3] = 1
+        defaults.set(self.catsOwned, forKey: "catsOwned")
+    }
+    
+    /////////////////////////////////////////////////
 }
