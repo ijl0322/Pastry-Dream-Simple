@@ -36,7 +36,7 @@ enum CatType: Int, CustomStringConvertible {
     }
     
     var price: Int {
-        let price = [0, 0, 0, 10000, 15000]
+        let price = [0, 0, 0, 0, 2000]
         return price[rawValue]
     }
     
@@ -230,8 +230,6 @@ class CatSpriteNode: SKSpriteNode {
     }
     
     func didMoveToScene() {
-        print("new cat added to scene")
-        
         setPhysicsBody()
         normalStateAnimation()
     }

@@ -446,7 +446,6 @@ extension GameScene {
         
         // Add Spinning Wood
         for obstaclePosition in level.spinningLogLocations {
-            print("Obstacle Position \(obstaclePosition[0])")
             let path = Bundle.main.path(forResource: "SpinningWood", ofType: "sks")
             let obstacle = SKReferenceNode(url: NSURL (fileURLWithPath: path!) as URL)
             let obstacleX = obstaclePosition[0]
@@ -458,8 +457,14 @@ extension GameScene {
         }
         
         // Add Moving Wood
-        let movingWood = MovingWood(x: 500.0, y: 1000.0)
-        addChild(movingWood)
+        for obstaclePosition in level.movingLogLocations {
+            let obstacleX = obstaclePosition[0]
+            let obstacleY = obstaclePosition[1]
+            let movingLog = MovingWood(x: CGFloat(obstacleX), y: CGFloat(obstacleY))
+            movingLog.zPosition = 20
+            print("Adding Spinning Wood")
+            addChild(movingLog)
+        }
     }
     
     //MARK: - Touches Helper

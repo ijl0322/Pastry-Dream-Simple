@@ -107,6 +107,21 @@ class UserData {
             defaults.set(rightCat.rawValue, forKey: "rightCat")
         }
     }
+    
+    func purchaseCat(catNum: Int) {
+        guard let cat = CatType(rawValue: catNum) else {
+            return
+        }
+        
+        if cat.price > coins {
+            return
+        }
+        
+        self.catsOwned[catNum] = 1
+        self.coins -= cat.price
+        defaults.set(self.catsOwned, forKey: "catsOwned")
+        defaults.set(coins, forKey: "coins")
+    }
         
     // Changes the user's nickname
     func changeNickname(name: String) {
@@ -165,8 +180,12 @@ class UserData {
     /////////////// Testing Functions ////////////////
     
     func addCoins() {
-        defaults.set(100005, forKey: "coins")
-        coins = 100005
+        defaults.set(100000, forKey: "coins")
+        coins = 100000
+        levelStatus = [.threeStar, .threeStar, .threeStar, .threeStar, .threeStar, .threeStar, .threeStar]
+        defaults.set(levelStatusToRaw(), forKey: "levelStatus")
+        highScores = [10000, 10000, 10000, 10000, 10000, 10000, 10000]
+        defaults.set(highScores, forKey: "highScores")
     }
     
     func reset() {
@@ -176,8 +195,15 @@ class UserData {
         }
         self.catsOwned[1] = 1
         self.catsOwned[2] = 1
-        self.catsOwned[3] = 1
+        self.catsOwned[3] = 0
+        self.leftCat = .cat1
+        self.rightCat = .cat2
         defaults.set(self.catsOwned, forKey: "catsOwned")
+        defaults.set(1, forKey: "leftCat")
+        defaults.set(2, forKey: "rightCat")
+        
+        defaults.set(1000, forKey: "coins")
+        coins = 1000
     }
     
     /////////////////////////////////////////////////

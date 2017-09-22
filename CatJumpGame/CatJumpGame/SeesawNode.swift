@@ -37,9 +37,7 @@ class SeesawNode: SKSpriteNode {
         super.encode(with: aCoder)
     }
     
-    func didMoveToScene() {
-        print("seesaw added to scene")
-        
+    func didMoveToScene() {        
         guard let scene = scene else {
             return
         }

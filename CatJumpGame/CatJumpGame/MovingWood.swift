@@ -10,6 +10,9 @@ import UIKit
 import SpriteKit
 
 class MovingWood: SKSpriteNode {
+    var xPosition: CGFloat = 0.0
+    var yPosition: CGFloat = 0.0
+    
     init(x: CGFloat, y: CGFloat) {
         let texture = SKTexture(imageNamed: "shortWood")
         let size = CGSize(width: 350, height: 45)
@@ -17,6 +20,8 @@ class MovingWood: SKSpriteNode {
         self.position = CGPoint(x: x, y: y)
         self.zPosition = 1
         self.name = "movingWood"
+        xPosition = x
+        yPosition = y
         physicsSetUp()
         animationSetUP()
     }
@@ -31,8 +36,8 @@ class MovingWood: SKSpriteNode {
     }
     
     func animationSetUP() {
-        let moveLeft = SKAction.move(by: CGVector(dx: -700, dy: 0), duration: 1.5)
-        let moveRight = moveLeft.reversed()
+        let moveLeft = SKAction.moveTo(x: xPosition - 700, duration: 1.5)
+        let moveRight =  SKAction.moveTo(x: xPosition, duration: 1.5)
         let moveSequence = SKAction.sequence([moveLeft, moveRight])
         let moveForever = SKAction.repeatForever(moveSequence)
         run(moveForever)

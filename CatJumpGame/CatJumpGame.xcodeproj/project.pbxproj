@@ -51,6 +51,8 @@
 		0E511C641ECE008A00F3E7A9 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E511C581ECE008A00F3E7A9 /* Vector3.swift */; };
 		0E511C681ECE0FBF00F3E7A9 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E511C671ECE0FBF00F3E7A9 /* Int+Extension.swift */; };
 		0E560D181F703454008CA91F /* Cat4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E560D171F703454008CA91F /* Cat4.sks */; };
+		0E6072431F75A25D00DEEB09 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E6072421F75A25D00DEEB09 /* empty.json */; };
+		0E6072451F75A9C400DEEB09 /* Level_7.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E6072441F75A9C400DEEB09 /* Level_7.json */; };
 		0E6332E11EDD2D9A00A48044 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E6332E01EDD2D9A00A48044 /* Settings.bundle */; };
 		0E68670C1ED518C5002E7886 /* BradBunR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E68670B1ED51850002E7886 /* BradBunR.ttf */; };
 		0E68670E1ED51B9E002E7886 /* MKOutlinedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E68670D1ED51B9E002E7886 /* MKOutlinedLabelNode.swift */; };
@@ -125,6 +127,8 @@
 		0E511C581ECE008A00F3E7A9 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		0E511C671ECE0FBF00F3E7A9 /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		0E560D171F703454008CA91F /* Cat4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Cat4.sks; sourceTree = "<group>"; };
+		0E6072421F75A25D00DEEB09 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		0E6072441F75A9C400DEEB09 /* Level_7.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_7.json; sourceTree = "<group>"; };
 		0E6332E01EDD2D9A00A48044 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0E68670B1ED51850002E7886 /* BradBunR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BradBunR.ttf; sourceTree = "<group>"; };
 		0E68670D1ED51B9E002E7886 /* MKOutlinedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKOutlinedLabelNode.swift; sourceTree = "<group>"; };
@@ -177,6 +181,8 @@
 				0EA4CC531EDD1C74000515EB /* Level_4.json */,
 				0E47E4831EDBDCBD0026CC7F /* Level_5.json */,
 				0E0BCAA61F6D9E47002B158A /* Level_6.json */,
+				0E6072441F75A9C400DEEB09 /* Level_7.json */,
+				0E6072421F75A25D00DEEB09 /* empty.json */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -440,6 +446,7 @@
 				0E139B2A1EDE367500304128 /* tink.mp3 in Resources */,
 				0E1DD8321ED77279003AE270 /* gameEndNotification.sks in Resources */,
 				0E139B271EDE262100304128 /* MaltShopBop.mp3 in Resources */,
+				0E6072451F75A9C400DEEB09 /* Level_7.json in Resources */,
 				0ED507DB1ECBDDA600E141C3 /* Assets.xcassets in Resources */,
 				0E68670C1ED518C5002E7886 /* BradBunR.ttf in Resources */,
 				0E14EA611ED92A8E00716762 /* LevelSelectionScene.sks in Resources */,
@@ -447,6 +454,7 @@
 				0ED507DE1ECBDDA600E141C3 /* LaunchScreen.storyboard in Resources */,
 				0EA4CC541EDD1C74000515EB /* Level_4.json in Resources */,
 				0EA2032E1F6EEA46008D0AAF /* CatSelectionScenePrototype.sks in Resources */,
+				0E6072431F75A25D00DEEB09 /* empty.json in Resources */,
 				0E0BCAAD1F6DFC62002B158A /* Cat3.sks in Resources */,
 				0E0BCAA91F6DBA88002B158A /* SpinningWood.sks in Resources */,
 				0E47E4881EDBDCBD0026CC7F /* Level_5.json in Resources */,

@@ -53,6 +53,7 @@ class Level {
     var timeLimit = 0
     var levelNum = 0
     var spinningLogLocations:[[Int]] = []
+    var movingLogLocations:[[Int]] = []
     
     init(num: Int) {
         
@@ -67,7 +68,7 @@ class Level {
         guard let tilesArray = dictionary["tiles"] as? [[Int]] else { return }
         guard let time = dictionary["timeLimit"] as? Int else {return}
         spinningLogLocations = dictionary["spinningLog"] as? [[Int]] ?? []
-        dump(spinningLogLocations)
+        movingLogLocations = dictionary["movingLog"] as? [[Int]] ?? []
         self.timeLimit = time
         
         for (row, rowArray) in tilesArray.enumerated() {

@@ -11,6 +11,7 @@ import SpriteKit
 
 class CatSelectionScene: SKScene {
     
+    let coinsLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
     var rightCatNode: CatSpriteNode!
     var leftCatNode: CatSpriteNode!
     var blocksHolder: SKSpriteNode!
@@ -22,6 +23,7 @@ class CatSelectionScene: SKScene {
     var downButton: SKSpriteNode!
     var arrow: SKSpriteNode!
     var pageNumber = 0
+    var catNum = 0
     
     override func didMove(to view: SKView) {
         leftCatType = UserData.shared.leftCat
@@ -50,7 +52,6 @@ class CatSelectionScene: SKScene {
         animateArrow()
         addChild(arrow)
         
-        let coinsLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
         coinsLabel.fontColor = UIColor.red
         coinsLabel.text = "\(UserData.shared.coins)"
         coinsLabel.fontSize = 50
@@ -157,6 +158,10 @@ class CatSelectionScene: SKScene {
                 handlePageChange(isUp: true)
             } else if nodeName == ButtonName.no {
                 removeUnlockNotice()
+            } else if nodeName == ButtonName.yes {
+                UserData.shared.purchaseCat(catNum: catNum)
+                removeUnlockNotice()
+                coinsLabel.text = "\(UserData.shared.coins)"
             }
         }
     }
@@ -165,6 +170,9 @@ class CatSelectionScene: SKScene {
         blocksHolder.removeFromParent()
         populateBlocks()
         selectionBackground.texture = SKTexture(imageNamed: "catSelect")
+        upButton.isHidden = false
+        downButton.isHidden = false
+        arrow.isHidden = false
     }
     
     func handlePageChange(isUp: Bool) {
@@ -229,15 +237,38 @@ class CatSelectionScene: SKScene {
         }
         
         if UserData.shared.catsOwned[num] != 1 {
-            presentUnlockCat(num: num)
+            guard let cat = CatType.init(raw: num) else {
+                return
+            }
+            catNum = num
+            if cat.price <= UserData.shared.coins {
+                presentUnlockCat(cat: cat)
+                print("attempting to purshase cat")
+            } else {
+                presentNoCoins()
+            }
+
         }
     }
     
-    func presentUnlockCat(num: Int) {
-        guard let cat = CatType.init(raw: num) else {
-            return
-        }
+    func presentNoCoins() {
+        upButton.isHidden = true
+        downButton.isHidden = true
+        arrow.isHidden = true
+        selectionBackground.texture = SKTexture(imageNamed: "noCoinsNotice")
         
+        blocksHolder.removeFromParent()
+        blocksHolder = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 1536, height: 2048))
+        blocksHolder.zPosition = 10
+        addChild(blocksHolder)
+        
+        let noButton = SKSpriteNode(texture: SKTexture(imageNamed: ButtonName.no))
+        noButton.position = CGPoint(x: 295,y: -343)
+        noButton.name = ButtonName.no
+        blocksHolder.addChild(noButton)
+    }
+    
+    func presentUnlockCat(cat: CatType) {
         selectionBackground.texture = SKTexture(imageNamed: "unlockNotice")
         
         print("unlock this cat ?")
