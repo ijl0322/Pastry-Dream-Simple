@@ -46,6 +46,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var leftCatNode: CatSpriteNode!
     var gameEndNotificationNode: GameEndNotificationNode?
     var pausedNotice: GamePausedNotificationNode?
+    var touchStartPosition: CGFloat?
+    
     
     //Game State
     var score = 0 {
@@ -125,6 +127,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             }
         }
         
+        if collision == PhysicsCategory.RightCat | PhysicsCategory.LeftCat {
+            if let catInAir = seesawNode?.catInTheAir() {
+                if catInAir == .left {
+                    leftCatNode.bounceOff()
+                } else {
+                    rightCatNode.bounceOff()
+                }
+            }
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -486,8 +497,15 @@ extension GameScene {
             releaseCat(catNode: leftCatNode)
             
         case .play:
-            seesawNode?.moveWithinBounds(targetLocation: touchLocation.x, leftBound: seesawLeftBound,
-                                         rightBound: seesawRightBound)
+            if let touchStartPosition = touchStartPosition {
+                let distance = touchLocation.x - touchStartPosition
+                seesawNode?.moveDirection(dx: distance, leftBound: seesawLeftBound, rightBound: seesawRightBound)
+                self.touchStartPosition = nil
+            } else {
+                touchStartPosition = touchLocation.x
+                print("touches started")
+            }
+            
         case .end:
             if let touchedNode =
                 atPoint(touch.location(in: self)) as? SKSpriteNode {

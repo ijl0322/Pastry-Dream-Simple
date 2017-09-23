@@ -269,13 +269,13 @@ class CatSpriteNode: SKSpriteNode {
         
     }
     
-//    func bounceOff() {
-//        if seatSide == .left {
-//            physicsBody?.applyImpulse(CGVector(dx: -400, dy: 200))
-//        } else {
-//            physicsBody?.applyImpulse(CGVector(dx: 400, dy: 200))
-//        }
-//    }
+    func bounceOff() {
+        if seatSide == .left {
+            physicsBody?.applyImpulse(CGVector(dx: -400, dy: 200))
+        } else {
+            physicsBody?.applyImpulse(CGVector(dx: 400, dy: 200))
+        }
+    }
     
     func dropSlightly() {
         //physicsBody?.applyImpulse(CGVector(dx: 0, dy: -300))

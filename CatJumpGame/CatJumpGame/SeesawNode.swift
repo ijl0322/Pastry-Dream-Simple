@@ -110,11 +110,16 @@ class SeesawNode: SKSpriteNode {
         }
     }
     
+    func moveDirection(dx: CGFloat, leftBound: CGFloat, rightBound: CGFloat) {        
+        // Swipe right. Move to right bound
+        if dx > 0 {
+            run(SKAction.moveTo(x: rightBound, duration: 0.5), withKey: "seesaw-move")
+        } else {
+            run(SKAction.moveTo(x: leftBound, duration: 0.5), withKey: "seesaw-move")
+        }
+    }
+    
     func moveWithinBounds(targetLocation: CGFloat, leftBound: CGFloat, rightBound: CGFloat) {
-        
-        //let speed = 400
-        
-        //var time = 0
         
         if targetLocation > leftBound && targetLocation < rightBound {
             run(SKAction.moveTo(x: targetLocation, duration: 0.7), withKey: "seesaw-move")
@@ -125,21 +130,12 @@ class SeesawNode: SKSpriteNode {
         else if targetLocation > rightBound {
             run(SKAction.moveTo(x: rightBound, duration: 0.7), withKey: "seesaw-move")
         }
-        
-//        if targetLocation > leftBound && targetLocation < rightBound {
-//            run(SKAction.moveTo(x: targetLocation, duration: 0.7), withKey: "seesaw-move")
-//        }
-//        else if targetLocation < leftBound {
-//            run(SKAction.moveTo(x: leftBound, duration: 0.7), withKey: "seesaw-move")
-//        }
-//        else if targetLocation > rightBound {
-//            run(SKAction.moveTo(x: rightBound, duration: 0.7), withKey: "seesaw-move")
-//        }
+
     }
     
     func stopMovement(){
         removeAction(forKey: "seesaw-move")
-        physicsBody?.isDynamic = false
+        // physicsBody?.isDynamic = false
     }
     
     func catInTheAir() -> SeatSide {
