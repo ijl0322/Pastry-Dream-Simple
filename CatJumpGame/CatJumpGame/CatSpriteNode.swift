@@ -261,7 +261,12 @@ class CatSpriteNode: SKSpriteNode {
     //MARK: - Actions
     
     func jump() {
-        physicsBody?.applyImpulse(CGVector(dx: 0, dy: 5000))
+        if seatSide == .left {
+            physicsBody?.applyImpulse(CGVector(dx: 500, dy: 7000))
+        } else {
+            physicsBody?.applyImpulse(CGVector(dx: -500, dy: 7000))
+        }
+        
     }
     
     func bounceOff() {
@@ -274,7 +279,9 @@ class CatSpriteNode: SKSpriteNode {
     
     func dropSlightly() {
         //physicsBody?.applyImpulse(CGVector(dx: 0, dy: -300))
-        self.physicsBody?.velocity = CGVector(dx: 0, dy: -350)
+        if (physicsBody?.velocity.dy)! > CGFloat(0.0) {
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: -350)
+        }
     }
     
     func enableSeesawContact() {

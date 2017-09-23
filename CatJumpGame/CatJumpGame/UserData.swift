@@ -182,9 +182,9 @@ class UserData {
     func addCoins() {
         defaults.set(100000, forKey: "coins")
         coins = 100000
-        levelStatus = [.threeStar, .threeStar, .threeStar, .threeStar, .threeStar, .threeStar, .threeStar]
+        levelStatus = [.threeStar, .threeStar, .threeStar, .threeStar, .threeStar, .threeStar, .threeStar, .threeStar]
         defaults.set(levelStatusToRaw(), forKey: "levelStatus")
-        highScores = [10000, 10000, 10000, 10000, 10000, 10000, 10000]
+        highScores = [10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000]
         defaults.set(highScores, forKey: "highScores")
     }
     

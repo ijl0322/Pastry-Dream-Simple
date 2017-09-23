@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     let TileHeight: CGFloat = 100.0
     let space: CGFloat = 47.0
     let breadSideMargin: CGFloat = 11.5
-    var breadTopMargin: CGFloat = 0
+    var breadTopMargin: CGFloat = 1020
     var level = Level(num: 1)
     var scoreLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
     var timeLabel = SKLabelNode(fontNamed: "BradyBunchRemastered")
@@ -384,7 +384,7 @@ extension GameScene {
             - maxAspectRatioWidth)/2
         let playableRect = CGRect(x:  playableMargin, y: 0,
                                   width: maxAspectRatioWidth, height: size.height)
-        breadTopMargin = size.height/2 - 50.0
+        //breadTopMargin = size.height/2 - 50.0
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: playableRect)
         physicsWorld.contactDelegate = self

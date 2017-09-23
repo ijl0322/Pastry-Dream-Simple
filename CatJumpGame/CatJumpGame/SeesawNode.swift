@@ -54,7 +54,7 @@ class SeesawNode: SKSpriteNode {
         
         // Add contact points for left cat and right cat
         
-        leftContactPointNode.size = CGSize(width: 30, height: 10)
+        leftContactPointNode.size = CGSize(width: 60, height: 10)
         leftContactPointNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         leftContactPointNode.position = CGPoint(x: -self.frame.size.width/4, y: self.frame.size.height/2)
         leftContactPointNode.physicsBody = SKPhysicsBody(rectangleOf: leftContactPointNode.frame.size)
@@ -63,7 +63,7 @@ class SeesawNode: SKSpriteNode {
         leftContactPointNode.physicsBody?.collisionBitMask = 0
         self.addChild(leftContactPointNode)
         
-        rightContactPointNode.size = CGSize(width: 30, height: 10)
+        rightContactPointNode.size = CGSize(width: 60, height: 10)
         rightContactPointNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         rightContactPointNode.position = CGPoint(x: self.frame.size.width/4, y: self.frame.size.height/2)
         rightContactPointNode.physicsBody = SKPhysicsBody(rectangleOf: rightContactPointNode.frame.size)
